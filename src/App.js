@@ -1,14 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
-import { GlobalStyled } from './GlobalStyled';
+import { Route, Routes } from 'react-router-dom';
+import { Login } from './pages/Login';
+import { Register } from './pages/Register';
+
 
 function App() {
   return (
-    <div >
-    <GlobalStyled/>
-    <p>Estilo global definido</p>
-      
-    </div>
+    <Routes >
+      <Route path='/' element={<Login/>}/>
+      <Route path='/register' element={<Register/>}/>
+ 
+    </Routes>
   );
 }
 
