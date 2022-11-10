@@ -13,7 +13,6 @@ export const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     request();
-    console.log(trails)
   }, []);
 
   return(
