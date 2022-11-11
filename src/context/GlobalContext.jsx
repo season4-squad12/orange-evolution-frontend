@@ -1,24 +1,29 @@
 import React, { createContext, useState } from "react";
-import { useEffect } from "react";
-import { requestTrails } from "../services/api";
+import { useNavigate } from "react-router-dom";
+import { setToken, validateLogin } from "../services/api";
 export const GlobalContext = createContext({});
 
 export const GlobalProvider = ({ children }) => {
-  const [trails, setTrails] = useState([1,2, 3]);
-  
-  const request = async () => {
-    const response = await requestTrails('/trails');
-    setTrails(response);
-  };
+  const [trails, setTrails] = useState([]);
 
-  useEffect(() => {
-    request();
-  }, []);
+  const navigate = useNavigate();
+  
+  const verifyLogin = async () => {
+    const user =  JSON.parse(localStorage.getItem('user'));
+    if (!user) return navigate('/login');
+    try {
+      setToken(user.token);
+      await validateLogin();
+    } catch (e) {
+      navigate('/login');
+    }
+  };
 
   return(
     <GlobalContext.Provider value={{
       trails,
       setTrails,
+      verifyLogin,
     }}>
       { children }
     </GlobalContext.Provider>
