@@ -10,7 +10,7 @@ export const Button = styled.button`
     font-size: 15px;
     line-height: 18.29px;
     border-radius: 30px;
-    margin-bottom: 14px;
+    margin-top: 30px;
     width: ${props => props.width};
     height: ${props => props.height};
   }
