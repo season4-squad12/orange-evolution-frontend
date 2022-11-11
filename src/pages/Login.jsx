@@ -5,7 +5,7 @@ import Logo from '../images/logo-orange-evolution.png'
 import Voltar from '../images/voltar-icone.png'
 import { Div } from "../Components/Div";
 import { Image } from "../Components/Image";
-import { Main, Card, A, Button, CardForm, Input } from '../Components/Login/Style';
+import { Main, Card, ButtonFooter, Button, CardForm, Input } from '../Components/Login/Style';
 
 
 export const Login = () => {
@@ -58,10 +58,11 @@ export const Login = () => {
                 <Div display="flex" flexDirection="column" alignItem="center" marginBottom="26px" background="none">
                     <Button type="button" onClick={ submintLogin } width="264px" height="60px">LOGAR</Button>
                     <Div display="flex" justifyContent="space-between" alignItem="center">
-                        <A href="/">
+                        <ButtonFooter onClick={()=> navigate('/')}>
                             <Image src={Voltar} alt="icone voltar" width="13px" height="11.15px" marginRight="5px" />
-                            Voltar a Home</A>
-                        <A href="/registrar">Faça o Registro</A>
+                            Voltar a Home
+                        </ButtonFooter>
+                        <ButtonFooter onClick="/registrar">Faça o Registro</ButtonFooter>
                     </Div>
                 </Div>
             </Card>

@@ -137,16 +137,14 @@ export const Button = styled.button`
 `;
 
 
-export const A = styled.a`
+export const ButtonFooter = styled.button`
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 13px;
     line-height: 15.85px;
-    text-decoration: none;
+    background: white;
+    border: none;
     color: #9A9A9A;
-    &:visited {
-        color: #9A9A9A;
-    }
 `;
 
 export const CardForm = styled.div`
