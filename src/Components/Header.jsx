@@ -5,7 +5,8 @@ import { Image } from "./Image";
 const HeaderStyle = styled.header`
   align-items: center;
   background-color: #001024;
-  display: flex;
+  display: fixed;
+  bottom: 0;
   height: 80px;
   width: 100vw;
 
