@@ -1,25 +1,28 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
-  background-color: ${props => props.background};
+export const ButtonAction = styled.button`
+  background-color: #00C19C;
   border: none;
-  color: ${props => props.color};
+  color: white;
   
   @media (max-width: 576px) {
     font-weight: 700;
     font-size: 15px;
     line-height: 18.29px;
     border-radius: 30px;
-    width: 156px;
-    height: 40px;
+    margin-top: 30px;
+    width: ${props => props.width};
+    height: ${props => props.height};
   }
 
- @media (min-width: 576px) and (max-width: 767.98px) {
+  @media (min-width: 576px) and (max-width: 767.98px) {
     font-weight: 700;
     font-size: 15px;
     line-height: 18.29px;
     border-radius: 30px;
     margin-bottom: 14px;
+    width: ${props => props.width};
+    height: ${props => props.height};
   }
 
   @media (min-width: 768px) and (max-width: 991.98px) {
@@ -28,6 +31,8 @@ export const Button = styled.button`
     line-height: 18.29px;
     border-radius: 30px;
     margin-bottom: 14px;
+    width: ${props => props.width};
+    height: ${props => props.height};
   }
 
   // X-Large devices (large desktops, 1200px and up)
@@ -37,6 +42,8 @@ export const Button = styled.button`
     line-height: 18.29px;
     border-radius: 30px;
     margin-bottom: 14px;
+    width: ${props => props.width};
+    height: ${props => props.height};
   }
   
 `;
