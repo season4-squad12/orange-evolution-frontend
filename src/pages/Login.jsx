@@ -1,64 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Input } from "../components/Login/Input";
 import { requestLogin } from "../services/api";
-import styled from "styled-components";
-import { Button } from "../components/Login/Button";
-import { CardForm } from "../components/CardForm";
 import Logo from '../images/logo-orange-evolution.png'
 import Voltar from '../images/voltar-icone.png'
-import { Image } from "../components/Image";
-import { Div } from '../components/Div'
+import { Div } from "../Components/Div";
+import { Image } from "../Components/Image";
+import { Main, Card, A, Button, CardForm, Input } from '../Components/Login/Style';
 
-
-const Main = styled.main`
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`;
-
-const Card = styled.div`
-    display: flex ;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-
-    @media (max-width: 576px) {
-        height: 100vh;
-        width: 100vw;
-    }
-  
-    // Medium devices (tablets, 768px and up)
-    @media (min-width: 576px) and (max-width: 767.98px){
-        width: 100vw;
-        height: 100vh;
-    }
-
-    // Large devices (desktops, 992px and up)
-    @media (min-width: 768px) and (max-width: 991.98px) {
-        width: 600px;
-        height: 600px;
-    }
-
-    // X-Large devices (large desktops, 1200px and up)
-    @media (min-width: 991.99px) {
-        width: 600px;
-        height: 500px;
-    }
-`;
-
-const A = styled.a`
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 15.85px;
-    text-decoration: none;
-    color: #9A9A9A;
-    &:visited {
-        color: #9A9A9A;
-    }
-`;
 
 export const Login = () => {
     document.title = 'Login';
