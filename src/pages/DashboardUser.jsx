@@ -1,9 +1,14 @@
 import React from "react";
+import { useEffect } from "react";
 import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 
-const DashboardUser = () => {
-  const { trails } = useContext(GlobalContext);
+export const DashboardUser = () => {
+  const { trails, verifyLogin } = useContext(GlobalContext);
+
+  useEffect(() => {
+    verifyLogin();
+  },[verifyLogin]);
 
   return (
     <>
@@ -17,4 +22,3 @@ const DashboardUser = () => {
   )
 };
 
-export default DashboardUser;
