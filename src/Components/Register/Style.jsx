@@ -33,15 +33,14 @@ export const Card = styled.div`
     // X-Large devices (large desktops, 1200px and up)
     @media (min-width: 991.99px) {
         width: 600px;
-        height: 500px;
+        height: 600px;
     }
 `;
 
 export const Input = styled.input`
-   &:focus {
+  &:focus {
     color: #5c5c5c;
     outline: none;
-    opacity: 1;
   }
   &:active {
     color: #5c5c5c;

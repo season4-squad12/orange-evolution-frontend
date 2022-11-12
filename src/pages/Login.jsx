@@ -10,6 +10,11 @@ import { Main, Card, ButtonFooter, Button, CardForm, Input } from '../Components
 
 export const Login = () => {
     document.title = 'Login';
+
+    const redirect = (url) => {
+        navigate(url);
+    };
+
     const [valueEmail, setEmail] = useState('');
     const [valuePassword, setPassword] = useState('');
 
@@ -58,11 +63,11 @@ export const Login = () => {
                 <Div display="flex" flexDirection="column" alignItem="center" marginBottom="26px" background="none">
                     <Button type="button" onClick={ submintLogin } width="264px" height="60px">LOGAR</Button>
                     <Div display="flex" justifyContent="space-between" alignItem="center">
-                        <ButtonFooter onClick={()=> navigate('/')}>
+                        <ButtonFooter onClick={()=> redirect('/')}>
                             <Image src={Voltar} alt="icone voltar" width="13px" height="11.15px" marginRight="5px" />
                             Voltar a Home
                         </ButtonFooter>
-                        <ButtonFooter onClick="/registrar">Faça o Registro</ButtonFooter>
+                        <ButtonFooter onClick={() => redirect('/registrar') }>Faça o Registro</ButtonFooter>
                     </Div>
                 </Div>
             </Card>
