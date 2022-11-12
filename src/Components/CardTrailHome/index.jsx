@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Polygon from '../../images/polygon.png'
 import PolygonDown from '../../images/polygon-down.png';
-import { Image } from "../Image";
-import { Card, Divider, Divdrop, Div, } from './CartTrailStyles';
+import { Image } from "../../styles/Image";
+import { Card, Divider, Divdrop, Div, } from './style';
 
-export const CardTrail = ({ trail }) => {
+const CardTrailHome = ({ trail }) => {
   const [drop, setDrop] = useState(false);
   
   const getDrop = () => {
@@ -26,3 +26,5 @@ export const CardTrail = ({ trail }) => {
       </Card>
   );
 };
+
+export default CardTrailHome;

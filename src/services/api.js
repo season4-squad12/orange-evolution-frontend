@@ -23,6 +23,11 @@ export const validateLogin = async (token) => {
     return data;
 };
 
+export const requestCreateUser = async (body) => {
+    const { data } = await api.post('/users', body);
+    return data;
+};
+
 export const requestTrails = async (token) => {
     const { data } = await api.get('/trails');
     return data;

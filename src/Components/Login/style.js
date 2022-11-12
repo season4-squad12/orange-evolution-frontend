@@ -38,16 +38,18 @@ export const Card = styled.div`
 `;
 
 export const Input = styled.input`
-  &::placeholder {
-    color: #BABABA;
+   &:focus {
+    color: #5c5c5c;
+    outline: none;
+    opacity: 1;
+  }
+  &:active {
+    color: #5c5c5c;
   }
 
-  &:focus {
-    outline: none;
-  }
-  background-color: none;
+  color: #5c5c5c;;
+  background: transparent;
   border: none;
-  color: #BABABA;
   border-bottom: 1px solid #BABABA;
   font-family: 'Montserrat', sans-serif;
 
@@ -136,7 +138,6 @@ export const Button = styled.button`
   
 `;
 
-
 export const ButtonFooter = styled.button`
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
@@ -144,7 +145,7 @@ export const ButtonFooter = styled.button`
     line-height: 15.85px;
     background: white;
     border: none;
-    color: #9A9A9A;
+    color: #5c5c5c;
 `;
 
 export const CardForm = styled.div`

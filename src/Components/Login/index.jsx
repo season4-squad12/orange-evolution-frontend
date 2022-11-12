@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { requestLogin } from "../services/api";
-import Logo from '../images/logo-orange-evolution.png'
-import Voltar from '../images/voltar-icone.png'
-import { Div } from "../Components/Div";
-import { Image } from "../Components/Image";
-import { Main, Card, ButtonFooter, Button, CardForm, Input } from '../Components/Login/Style';
+import { requestLogin } from "../../services/api";
+import Logo from '../../images/logo-orange-evolution.png'
+import Voltar from '../../images/voltar-icone.png'
+import { Div } from "../../styles/DivDefault";
+import { Image } from "../../styles/Image";
+import { Main, Card, ButtonFooter, Button, CardForm, Input } from './style';
 
 
-export const Login = () => {
+const Login = () => {
     document.title = 'Login';
+
+    const redirect = (url) => {
+        navigate(url);
+    };
+
     const [valueEmail, setEmail] = useState('');
     const [valuePassword, setPassword] = useState('');
 
@@ -58,14 +63,16 @@ export const Login = () => {
                 <Div display="flex" flexDirection="column" alignItem="center" marginBottom="26px" background="none">
                     <Button type="button" onClick={ submintLogin } width="264px" height="60px">LOGAR</Button>
                     <Div display="flex" justifyContent="space-between" alignItem="center">
-                        <ButtonFooter onClick={()=> navigate('/')}>
+                        <ButtonFooter onClick={()=> redirect('/')}>
                             <Image src={Voltar} alt="icone voltar" width="13px" height="11.15px" marginRight="5px" />
                             Voltar a Home
                         </ButtonFooter>
-                        <ButtonFooter onClick="/registrar">Faça o Registro</ButtonFooter>
+                        <ButtonFooter onClick={() => redirect('/registrar') }>Faça o Registro</ButtonFooter>
                     </Div>
                 </Div>
             </Card>
         </Main>
     );
 };
+
+export default Login;
