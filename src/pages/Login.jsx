@@ -5,7 +5,7 @@ import Logo from '../images/logo-orange-evolution.png'
 import Voltar from '../images/voltar-icone.png'
 import { Div } from "../Components/Div";
 import { Image } from "../Components/Image";
-import { Main, Card, ButtonFooter, Button, CardForm, Input } from '../Components/Login/Style';
+import { Main, Card, ButtonFooter, Button, CardForm, Input } from '../Components/Login/style';
 
 
 export const Login = () => {

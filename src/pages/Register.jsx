@@ -41,7 +41,7 @@ import { requestCreateUser } from "../services/api";
             });
             if (result) {
                 localStorage.setItem('user', JSON.stringify(result));
-                // navigate('/selecionar-trilha')
+                navigate('/selecionar-trilha')
             }
         } catch(e) {
             console.log(e)
