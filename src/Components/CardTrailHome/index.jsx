@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Polygon from '../../images/polygon.png'
 import PolygonDown from '../../images/polygon-down.png';
-import { Image } from "../Image";
+import { Image } from "../../styles/Image";
 import { Card, Divider, Divdrop, Div, } from './style';
 
 const CardTrailHome = ({ trail }) => {

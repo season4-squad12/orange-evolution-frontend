@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { requestLogin } from "../../services/api";
 import Logo from '../../images/logo-orange-evolution.png'
 import Voltar from '../../images/voltar-icone.png'
-import { Div } from "../Div";
-import { Image } from "../Image";
+import { Div } from "../../styles/DivDefault";
+import { Image } from "../../styles/Image";
 import { Main, Card, ButtonFooter, Button, CardForm, Input } from './style';
 
 

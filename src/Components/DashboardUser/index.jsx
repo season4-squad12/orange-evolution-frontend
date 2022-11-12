@@ -1,9 +1,9 @@
 import React from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
-import { GlobalContext } from "../context/GlobalContext";
+import { GlobalContext } from "../../context/GlobalContext";
 
-export const DashboardUser = () => {
+const DashboardUser = () => {
   const { trails, verifyLogin } = useContext(GlobalContext);
 
   useEffect(() => {
@@ -22,3 +22,4 @@ export const DashboardUser = () => {
   )
 };
 
+export default DashboardUser;
