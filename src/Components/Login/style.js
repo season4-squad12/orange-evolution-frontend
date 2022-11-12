@@ -138,7 +138,6 @@ export const Button = styled.button`
   
 `;
 
-
 export const ButtonFooter = styled.button`
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
