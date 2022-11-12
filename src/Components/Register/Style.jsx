@@ -52,17 +52,6 @@ export const Input = styled.input`
   border-bottom: 1px solid #BABABA;
   font-family: 'Montserrat', sans-serif;
 
-  color: #5c5c5c;;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #BABABA;
-
-  background-color: white;
-  border: none;
-  color: #1b1a1a;
-  border-bottom: 1px solid #BABABA;
-  font-family: 'Montserrat', sans-serif;
-
   @media (max-width: 576px) {
     font-size: 13px;
     font-style: normal;
