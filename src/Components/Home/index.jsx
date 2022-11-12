@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { Header } from '../Components/Header';
-import { Button, ButtonAction, Footer, Main, Banner, CardList } from '../Components/Home/style';
-import { CardTrail } from '../Components/Home/CardTrail';
-import { requestTrialsHome } from '../services/api';
-import { useEffect } from 'react';
+import { Header } from '../Header';
+import { Button, ButtonAction, Footer, Main, Banner, CardList } from './style';
+import CardTrail from '../CardTrailHome/CardTrailHome';
+import { requestTrialsHome } from '../../services/api';
 
-
-export const Home = () => {
+const Home = () => {
   const [trails, setTrails] = useState([]);
   document.title = "Orange Evolution"
   const navigate = useNavigate();
@@ -56,3 +54,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;
