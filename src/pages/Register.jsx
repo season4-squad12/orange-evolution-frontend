@@ -1,16 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from '../images/logo-orange-evolution.png';
 import Voltar from '../images/voltar-icone.png';
 import { Div } from "../Components/Div";
 import { Image } from "../Components/Image";
 import { Main, Card, ButtonFooter, Button, CardForm, Input } from '../Components/Register/Style';
+import { requestCreateUser } from "../services/api";
 
  export const Register = ()=>{
+    const [name, setName] = useState('')
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleChange = ({ target: { value, name }}) => {
+        switch (name) {
+            case 'name': setName(value); break;
+            case 'lastname': setLastName(value); break;
+            case 'email': setEmail(value); break;
+            case 'password': setPassword(value); break;
+            default: break;
+        }
+    };
+
     const navigate = useNavigate();
 
     const redirect = (url) => {
         navigate(url);
+    };
+    
+    const submitForm = async () => {
+        try {
+            const result = await requestCreateUser({
+                name,
+                lastName,
+                email,
+                role: 'student',
+                password,
+                trails: []
+            });
+            if (result) {
+                localStorage.setItem('user', JSON.stringify(result));
+                // navigate('/selecionar-trilha')
+            }
+        } catch(e) {
+            console.log(e)
+        }
+
     };
 
     return (
@@ -20,35 +56,35 @@ import { Main, Card, ButtonFooter, Button, CardForm, Input } from '../Components
             <CardForm>
                 <Input
                     type="text"
-                    name="email"
-                    /* value={ valueEmail }
-                    onChange={ handleChangeEmail } */
-                    placeholder="Email"
+                    name="name"
+                    value={ name }
+                    onChange={ handleChange }
+                    placeholder="Nome"
                 />
                 <Input 
                     type="text"
                     name="lastname"
-                    /* value={ valuePassword }
-                    onChange={ handleChangePassword } */
+                    value={ lastName }
+                    onChange={ handleChange }
                     placeholder="Sobrenome"
                 />
                 <Input 
                     type="email"
                     name="email"
-                    /* value={ valuePassword }
-                    onChange={ handleChangePassword } */
+                    value={ email }
+                    onChange={ handleChange }
                     placeholder="Email"
                 />
                 <Input 
                     type="password"
                     name="password"
-                    /* value={ valuePassword }
-                    onChange={ handleChangePassword } */
+                    value={ password }
+                    onChange={ handleChange }
                     placeholder="Senha"
                 />
             </CardForm>
             <Div display="flex" flexDirection="column" alignItem="center" marginBottom="26px" background="none">
-                <Button type="button" width="264px" height="60px">REGISTRAR</Button>
+                <Button type="button" onClick={ submitForm } width="264px" height="60px">REGISTRAR</Button>
                 <Div display="flex" justifyContent="space-between" alignItem="center">
                     <ButtonFooter onClick={ () => redirect('/')}>
                         <Image src={Voltar} alt="icone voltar" width="13px" height="11.15px" marginRight="5px" />
