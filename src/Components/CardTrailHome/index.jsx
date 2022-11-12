@@ -4,7 +4,7 @@ import PolygonDown from '../../images/polygon-down.png';
 import { Image } from "../Image";
 import { Card, Divider, Divdrop, Div, } from './style';
 
-const CardTrail = ({ trail }) => {
+const CardTrailHome = ({ trail }) => {
   const [drop, setDrop] = useState(false);
   
   const getDrop = () => {
@@ -27,4 +27,4 @@ const CardTrail = ({ trail }) => {
   );
 };
 
-export default CardTrail;
+export default CardTrailHome;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Header } from '../Header';
 import { Button, ButtonAction, Footer, Main, Banner, CardList } from './style';
-import CardTrail from '../CardTrailHome/CardTrailHome';
+import CardTrail from '../CardTrailHome';
 import { requestTrialsHome } from '../../services/api';
 
 const Home = () => {

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Logo from '../images/logo-orange-evolution.png';
-import Voltar from '../images/voltar-icone.png';
-import { Div } from "../Components/Div";
-import { Image } from "../Components/Image";
-import { Main, Card, ButtonFooter, Button, CardForm, Input } from '../Components/Register/Style';
-import { requestCreateUser } from "../services/api";
+import Logo from '../../images/logo-orange-evolution.png';
+import Voltar from '../../images/voltar-icone.png';
+import { Div } from "../Div";
+import { Image } from "../Image";
+import { Main, Card, ButtonFooter, Button, CardForm, Input } from './style';
+import { requestCreateUser } from "../../services/api";
 
- export const Register = ()=>{
+ const Register = ()=>{
     const [name, setName] = useState('')
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -96,4 +96,6 @@ import { requestCreateUser } from "../services/api";
         </Card>
     </Main>
     )
-}
+};
+
+export default Register;
