@@ -4,7 +4,7 @@ import { Login } from './pages/Login';
 import { Home } from './pages/Home';
 import { Register } from './pages/Register';
 import { DashboardUser } from './pages/DashboardUser';
-import MenuTrails from './pages/MenuTrails';
+import MenuTrails from './Components/MenuTrail/MenuTrail';
 
 
 function App() {
@@ -14,6 +14,9 @@ function App() {
       <Route path='/login' element={<Login />}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/dashboard' element={ <DashboardUser /> } />
+
+
+
       <Route path='/trails' element={ <MenuTrails />} />
     </Routes>
   );

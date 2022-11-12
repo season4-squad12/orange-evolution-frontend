@@ -11,7 +11,7 @@ export const Navegation = styled.nav`
   background-color: #8819D2;
   min-width: 100vw;
   height: 80px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
 
   img:hover{

@@ -1,21 +1,20 @@
 import styled from "styled-components";
 
 export const Input = styled.input`
-
   &::placeholder {
     color: #BABABA;
   }
 
   &:focus {
     outline: none;
+    background-color: white;
   }
-  background-color: white;
   border: none;
   color: #BABABA;
   border-bottom: 1px solid #BABABA;
   font-family: 'Montserrat', sans-serif;
   box-shadow: 0 0 0 30px white inset;
-
+  
 
   
   @media (max-width: 576px) {
@@ -25,6 +24,8 @@ export const Input = styled.input`
     margin-bottom: 35px;
     width: 262px;
     height: 30px;
+    background-color: black;
+
 
   }
 
