@@ -33,15 +33,14 @@ export const Card = styled.div`
     // X-Large devices (large desktops, 1200px and up)
     @media (min-width: 991.99px) {
         width: 600px;
-        height: 500px;
+        height: 600px;
     }
 `;
 
 export const Input = styled.input`
-   &:focus {
+  &:focus {
     color: #5c5c5c;
     outline: none;
-    opacity: 1;
   }
   &:active {
     color: #5c5c5c;
@@ -50,6 +49,17 @@ export const Input = styled.input`
   color: #5c5c5c;;
   background: transparent;
   border: none;
+  border-bottom: 1px solid #BABABA;
+  font-family: 'Montserrat', sans-serif;
+
+  color: #5c5c5c;;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #BABABA;
+
+  background-color: white;
+  border: none;
+  color: #1b1a1a;
   border-bottom: 1px solid #BABABA;
   font-family: 'Montserrat', sans-serif;
 
