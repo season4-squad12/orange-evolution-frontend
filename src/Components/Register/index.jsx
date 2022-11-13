@@ -41,7 +41,7 @@ import { requestCreateUser } from "../../services/api";
             });
             if (result) {
                 localStorage.setItem('user', JSON.stringify(result));
-                // navigate('/selecionar-trilha')
+                navigate('/selecionar-trilha')
             }
         } catch(e) {
             console.log(e)
@@ -60,6 +60,7 @@ import { requestCreateUser } from "../../services/api";
                     value={ name }
                     onChange={ handleChange }
                     placeholder="Nome"
+                    required={ true }
                 />
                 <Input 
                     type="text"
