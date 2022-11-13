@@ -84,6 +84,7 @@ export const CardTrailOne = styled.section`
 export const CardCapsule = styled.section`
 width: 328px;
 margin-top: 10px;
+margin-right: 10px;
 display: flex;
 align-items: center;
 &:first-child{
@@ -92,11 +93,18 @@ align-items: center;
 }
 `
 const MainCardTrails = styled.main`
+  margin: 0px;
+  border: 0px;
   background-color: white; 
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
+  padding-right: 10px;
+  margin-top: 10px;
+  width: 100%;
+  padding-bottom: 80px;
+
 `;
 
 

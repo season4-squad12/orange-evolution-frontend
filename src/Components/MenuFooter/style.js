@@ -9,7 +9,7 @@ export const Navegation = styled.nav`
   justify-content: space-around;
   padding: 25px;
   background-color: #8819D2;
-  min-width: 100vw;
+  width: 100%;
   height: 80px;
   position: fixed;
   bottom: 0;
