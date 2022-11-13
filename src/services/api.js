@@ -24,7 +24,7 @@ export const validateLogin = async () => {
 };
 
 // EndPoint Trilhas 
-export const requestTrialsHome = async () => {
+export const requestTrailsHome = async () => {
     const { data } = await api.get('/trailshome');
     return data;
 };

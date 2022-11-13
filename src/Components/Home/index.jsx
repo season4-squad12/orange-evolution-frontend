@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Header } from '../Header';
 import { Button, ButtonAction, Footer, Main, Banner, CardList } from './style';
 import CardTrail from '../CardTrailHome';
-import { requestTrialsHome } from '../../services/api';
+import { requestTrailsHome } from '../../services/api';
 
 const Home = () => {
   const [trails, setTrails] = useState([]);
@@ -11,7 +11,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const request = async () => {
-    const response = await requestTrialsHome();
+    const response = await requestTrailsHome();
     setTrails(response);
   }
 
