@@ -4,6 +4,7 @@ import Home from './Components/Home';
 import Register from './Components/Register';
 import DashboardUser from './Components/DashboardUser';
 import MenuTrails from './Components/MenuTrail/MenuTrail';
+import ContentScreen from './Components/ContentScreen';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Route path='/registrar' element={<Register />}/>
       <Route path='/dashboard' element={ <DashboardUser />} />
       <Route path='/trilhas' element={ <MenuTrails />} />
+      <Route path='/conteudo' element={ <ContentScreen /> } />
     </Routes>
   );
 }
