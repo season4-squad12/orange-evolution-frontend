@@ -12,6 +12,7 @@ export const TypeContent = styled.p`
 `
 export const TitleContent = styled.p`
   font-size: 13px;
+  font-family: 'Montserrat', sans-serif;
 `
 export const DividerInfos = styled.div`
   background-color: #001024;
@@ -21,6 +22,7 @@ export const DividerInfos = styled.div`
 `;
 
 export const Author = styled.p`
+  font-family: 'Montserrat', sans-serif;
   font-size: 12px;
 `
 
@@ -29,6 +31,7 @@ export const ButtonForContent =styled.button`
   border: none;
 `
 export const IdCard = styled.p`
+  font-family: 'Montserrat', sans-serif;
   font-size: 36px;
   font-weight: bold;
   color: #001024;

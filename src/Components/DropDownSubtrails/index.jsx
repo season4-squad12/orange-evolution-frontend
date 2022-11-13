@@ -26,9 +26,9 @@ export const DropDownSubtrail = () => {
         </NameSubtrail>
       </DivPolygon>
       <DivContents drop={drop}>
-        {numbers.map((_item) => (
+        {numbers.map((_item,index) => (
 
-          <CardCapsule>
+          <CardCapsule key={index}>
 
             <CircleCard>
               <IdCard>10</IdCard>

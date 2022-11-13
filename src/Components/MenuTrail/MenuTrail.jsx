@@ -8,10 +8,11 @@ const CardTrail = () => {
   const array = [1, 2, 3]
   return (
     <>
-      <Header />     <MainCardTrails>
+      <Header />     
+      <MainCardTrails>
         {
-          array.map(() => (
-            <DropDownSubtrail />
+          array.map((_item, index) => (
+            <DropDownSubtrail key={index}/>
           ))
         }
 
