@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Main, Section, Button } from "./style";
-import { requestTrialsHome } from "../../services/api";
+import { requestTrailsHome } from "../../services/api";
 import CardSelectTrail from "../CardSelectTrail";
 import { requestSelectTrails, setToken } from "../../services/api";
 import { GlobalContext } from "../../context/GlobalContext";
@@ -12,7 +12,7 @@ export const SelectTrail = () => {
   const navigate = useNavigate();
 
   const request = async () => {
-    const response = await requestTrialsHome();
+    const response = await requestTrailsHome();
     setTrails(response);
   }
 
