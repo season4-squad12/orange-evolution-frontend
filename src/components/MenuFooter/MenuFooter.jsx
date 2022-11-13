@@ -11,8 +11,7 @@ const MenuFooter = () => {
       <ButtonFooter><img src={trails} alt="botão para acessar as trilhas disponiveis" />
       </ButtonFooter>
       <ButtonFooter><img src={user} alt="botão para acessar a dashboard do usuário" /></ButtonFooter>
-      <ButtonFooter><img src={ranking} alt="botão para acessar o ranking geral" />
-      </ButtonFooter>
+
 
     </Navegation>
   )
