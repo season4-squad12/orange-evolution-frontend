@@ -3,8 +3,7 @@ import Login from './Components/Login';
 import Home from './Components/Home';
 import Register from './Components/Register';
 import DashboardUser from './Components/DashboardUser';
-import { SelectTrail } from './pages/SelectTrail';
-
+import { SelectTrail } from './Components/SelectTrail';
 
 function App() {
   return (

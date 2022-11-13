@@ -60,6 +60,7 @@ import { requestCreateUser } from "../../services/api";
                     value={ name }
                     onChange={ handleChange }
                     placeholder="Nome"
+                    required={ true }
                 />
                 <Input 
                     type="text"

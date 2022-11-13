@@ -18,7 +18,7 @@ export const requestLogin = async (body) => {
     return data;
 }
 
-export const validateLogin = async (token) => {
+export const validateLogin = async () => {
     const { data } = await api.get('/login/validate');
     return data;
 };
@@ -29,8 +29,14 @@ export const requestTrialsHome = async () => {
     return data;
 };
 
-export const requestTrails = async (token) => {
+export const requestTrails = async () => {
     const { data } = await api.get('/trails');
+    return data;
+};
+
+//EndPoint SubTrilhas
+export const requestSelectTrails = async (body) => {
+    const { data } = await api.post('/usertrails', body);
     return data;
 };
 

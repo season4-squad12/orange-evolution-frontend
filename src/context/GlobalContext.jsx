@@ -5,11 +5,12 @@ export const GlobalContext = createContext({});
 
 export const GlobalProvider = ({ children }) => {
   const [trails, setTrails] = useState([]);
+  const [trailsSelected, setSelectTrail] = useState([]);
 
   const navigate = useNavigate();
   
   const verifyLogin = async () => {
-    const user =  JSON.parse(localStorage.getItem('user'));
+    const { user } =  JSON.parse(localStorage.getItem('user'));
     if (!user) return navigate('/login');
     try {
       setToken(user.token);
@@ -24,6 +25,8 @@ export const GlobalProvider = ({ children }) => {
       trails,
       setTrails,
       verifyLogin,
+      trailsSelected,
+      setSelectTrail,
     }}>
       { children }
     </GlobalContext.Provider>
