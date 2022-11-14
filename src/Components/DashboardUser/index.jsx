@@ -1,24 +1,25 @@
 import React from "react";
-import { useEffect } from "react";
-import { useContext } from "react";
-import { GlobalContext } from "../../context/GlobalContext";
+import styled from "styled-components";
+import { Header } from "../Header";
+import { DivPerfil, ImagePerfil } from "./style";
+import fotoPerfil from '../../images/image-perfil.png';
+
+const Main = styled.main`
+  
+`;
 
 const DashboardUser = () => {
-  const { trails, verifyLogin } = useContext(GlobalContext);
-
-  useEffect(() => {
-    verifyLogin();
-  },[verifyLogin]);
-
   return (
-    <>
-      <h1>Dashboard</h1>
-      { trails.length > 0 &&
-          trails.map((trail, index) => (
-          <p key ={index}>{index} - {trail.name}</p>      
-        ))
-      }
-    </>
+    <Main>
+      <Header />
+      <DivPerfil>
+        <ImagePerfil src={fotoPerfil} alt="foto de perfil" />
+        <div>
+          <h1>Rodrigo Carvalho</h1>
+          <h3>Admin</h3>
+        </div>
+      </DivPerfil>
+    </Main>
   )
 };
 
