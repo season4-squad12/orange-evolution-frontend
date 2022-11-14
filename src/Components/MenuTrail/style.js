@@ -12,23 +12,26 @@ export const TypeContent = styled.p`
 `
 export const TitleContent = styled.p`
   font-size: 13px;
+  font-family: 'Montserrat', sans-serif;
 `
 export const DividerInfos = styled.div`
   background-color: #001024;
   height: 1px;
-  width: 160px;
+  width: 100%;
   text-align: center;
 `;
 
 export const Author = styled.p`
+  font-family: 'Montserrat', sans-serif;
   font-size: 12px;
 `
 
-export const ButtonForContent =styled.button`
+export const ButtonForContent = styled.button`
   background-color: transparent;
   border: none;
 `
 export const IdCard = styled.p`
+  font-family: 'Montserrat', sans-serif;
   font-size: 36px;
   font-weight: bold;
   color: #001024;
@@ -45,9 +48,10 @@ export const DividerCircle = styled.div`
 `;
 export const InfosCard = styled.div`
   background-color: none;
-  width: 180px;
+  width: 80%;//180px
   height: 134px;
   margin-right: 5px;
+  margin-left: 100px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -71,10 +75,10 @@ export const CircleCard = styled.div`
 export const CardTrailOne = styled.section`
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: center;
   margin-left: 24px;
   background-color: white;
-  width: 304px;
+  width: 100%;
   height: 150px;
   border: 5px solid #420C66;
   border-radius: 10px;
@@ -82,7 +86,6 @@ export const CardTrailOne = styled.section`
  `;
 
 export const CardCapsule = styled.section`
-width: 328px;
 margin-top: 10px;
 margin-right: 10px;
 display: flex;
@@ -90,22 +93,54 @@ align-items: center;
 &:first-child{
   position: relative;
 
+  @media (max-width: 576px) {
+    width: 328px;
+  }
+
+ @media (min-width: 576px) and (max-width: 767.98px) {
+   width: 576px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1200px) {
+   width: 768px;
+  }
 }
 `
-const MainCardTrails = styled.main`
+const MainCardTrails = styled.section`
   margin: 0px;
   border: 0px;
-  background-color: white; 
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   padding-right: 10px;
+  width: 360px;
   margin-top: 10px;
-  width: 100%;
+  max-width: 800px;
   padding-bottom: 80px;
+  margin: 0px auto;
+  @media (max-width: 576px) {
+    width: 328px;
+  }
 
-`;
+ @media (min-width: 576px) and (max-width: 767.98px) {
+   width: 576px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1200px) {
+   width: 768px;
+  }
+
+`
+
+export const DivFilters = styled.div`
+ margin-top: 50px;
+ margin-bottom: 50px;
+ select{
+  border: 2px solid #001024 !important;
+  border-radius: 10px;
+ }
+`
 
 
 

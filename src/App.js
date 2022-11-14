@@ -5,17 +5,21 @@ import Register from './Components/Register';
 import DashboardUser from './Components/DashboardUser';
 import MenuTrails from './Components/MenuTrail/MenuTrail';
 import ContentScreen from './Components/ContentScreen';
-
+import { SelectTrail } from './Components/SelectTrail';
+import DashboardAdmin from './Components/DashboardAdmin';
 
 function App() {
   return (
-    <Routes >
+    <Routes>
       <Route path='/' element={<Home />}/>
       <Route path='/login' element={<Login />}/>
       <Route path='/registrar' element={<Register />}/>
-      <Route path='/dashboard' element={ <DashboardUser />} />
       <Route path='/trilhas' element={ <MenuTrails />} />
       <Route path='/conteudo' element={ <ContentScreen /> } />
+      <Route path='/perfil' element={ <DashboardUser />} />
+      <Route path="selecionar-trilha" element={<SelectTrail />} />
+      <Route path='dashboard' element={<DashboardAdmin />} />
+      <Route path="*" element={<Login />} />
     </Routes>
   );
 }

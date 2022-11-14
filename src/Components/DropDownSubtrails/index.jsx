@@ -1,37 +1,43 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Author, ButtonForContent, CardCapsule, CardTrailOne, CircleCard, DividerCircle, DividerInfos, Evaluation, IdCard, InfosCard, TitleContent, TypeContent } from '../MenuTrail/style'
 import content from '../../images/content.png'
 import polygon from '../../images/polygon.png';
 import polygonDown from '../../images/polygon-down.png';
 import { useState } from 'react'
-import { DivContents, DividerSubtrails, DivPolygon, NameSubtrail} from './Style';
+import { DivContents, DividerSubtrails, DivPolygon, NameSubtrail, PositionDivPolygon} from './Style';
 
 
 
 
-export const DropDownSubtrail = () => {
+export const DropDownSubtrail = ({trail}) => {
 
-  const numbers = [1, 2, 3]
   const [drop, setDrop] = useState(false)
 
   const changeDrop = () => setDrop(!drop)
 
+  useEffect(()=>{
+  },[]);
+
   return (
     <>
+      
       <DivPolygon onClick={changeDrop}>
+        
         <DividerSubtrails/>
         <NameSubtrail>
-          <p>Subtrilhas</p>
+          <p>{trail.name}</p>
           <img src={drop ? polygonDown : polygon} alt="" />
         </NameSubtrail>
+        
       </DivPolygon>
+      
       <DivContents drop={drop}>
-        {numbers.map((_item) => (
+        {trail['conteúdos']?.map((_item,index) => (
 
-          <CardCapsule>
+          <CardCapsule key={index}>
 
             <CircleCard>
-              <IdCard>10</IdCard>
+              <IdCard>{index+1}</IdCard>
               <DividerCircle />
               <Evaluation>★ 4.0</Evaluation>
             </CircleCard>

@@ -9,12 +9,13 @@ export const NameSubtrail =styled.div`
  max-height: 30px;
 `
 export const DivPolygon = styled.div`
-  background-color: none;
-  
+ align-self: flex-end;
 `
+
+
+
 export const DivContents = styled.div`
   display: ${props=>props.drop ? 'block':'none'};
-  background-color: none;
 
 `
 export const DividerSubtrails = styled.div`
