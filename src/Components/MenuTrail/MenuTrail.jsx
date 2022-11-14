@@ -5,21 +5,16 @@ import MenuFooter from '../MenuFooter/MenuFooter'
 import { DropDownSubtrail } from '../DropDownSubtrails'
 import {InputSelect} from '../../styles/InputSelect'
 import { useState } from 'react'
-import { useEffect } from 'react'
 import { GlobalContext } from '../../context/GlobalContext'
 import polygon from '../../images/polygon.png'
 
 const CardTrail = () => {  
   const {trails} = useContext(GlobalContext)
+  const [trailActive, setTrailActive] = useState(undefined);
 
-  const [selectTrail, setselectTrail] = useState(0); 
-  const changeSelect = ({target:{value}}) =>{
-    setselectTrail(value)
+  const changeSelect = ({target:{value}}) => {
+    setTrailActive(trails[value]);
   }
-
-  useEffect(()=>{
-    console.log(trails)
-  },[]);
 
   return (
     <>
@@ -29,10 +24,11 @@ const CardTrail = () => {
         <DivFilters>
         {/* <div> */}
         <InputSelect>
-          <select name="trails" value={selectTrail} onChange={changeSelect}>
+          <select name="trails" onChange={changeSelect}>
+          <option>Selecione uma trilha</option>
           {
-          trails?.map((trail)=>(
-            <option value={trail.id} key={trail.id}>
+          trails?.map((trail, index)=>(
+            <option value={index} key={trail.id}>
               Trilha {trail.name}
             </option>
           ))}
@@ -43,13 +39,31 @@ const CardTrail = () => {
         {/* </div> */}
 
         </DivFilters>
-        
-        {
-          trails[selectTrail]?.subtrilhas?.map((trail, index) => (
-            <DropDownSubtrail key={index} trail={trail} />
-          ))
+            {
+              !trailActive &&
+                <p>Nenhuma trilha selecionada.</p>
+            }
+        { 
+          /* !trailActive ?
+            trails[0] &&
+            trails[0].subtrilhas &&
+              trails[0].subtrilhas.length > 0? (
+                trails[0]?.subtrilhas?.map((subtrail, index) => (
+                  <DropDownSubtrail key={index} subtrail={subtrail} />
+                )
+              )) : (
+                <p>Nenhuma subtrilha encontrada.</p>
+              ) */
+          trailActive &&
+            trailActive.subtrilhas &&
+              trailActive.subtrilhas.length < 1 ?
+                <p>Nenhuma subtrilha encontrada.</p>
+              :
+              trailActive?.subtrilhas?.map((subtrail, index) => (
+                <DropDownSubtrail key={index} subtrail={subtrail} />
+              ))
         }
-
+    
       </MainCardTrails>
       </main>
       <MenuFooter />
