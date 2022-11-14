@@ -6,7 +6,7 @@ export const HeaderApp = styled.header`
   display: flex;
   justify-content: space-between;
   height: 80px;
-  width: 100vw;
+  width: 100%;
 
   
   @media (min-width: 768px) and (max-width: 991.98px) {

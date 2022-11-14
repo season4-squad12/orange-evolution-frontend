@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'http://localhost:3001'
+    baseURL: 'http://localhost:3001/'
 });
 
 export const setToken = (token) => {
@@ -29,12 +29,15 @@ export const requestTrailsHome = async () => {
     return data;
 };
 
-export const requestTrails = async () => {
-    const { data } = await api.get('/trails');
+export const requestTrailsUser = async (id) => {
+    const { data } = await api.get(`/trails-user/${id}`);
     return data;
 };
 
-//EndPoint SubTrilhas
+export const requestSubtrail = async (id) => {
+    const { data } = await api.get(`/subtrails/${id}`);
+    return data;
+};
 export const requestSelectTrails = async (body) => {
     const { data } = await api.post('/usertrails', body);
     return data;
@@ -45,4 +48,3 @@ export const requestCreateUser = async (body) => {
     const { data } = await api.post('/users', body);
     return data;
 };
-
