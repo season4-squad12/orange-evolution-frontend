@@ -1,39 +1,44 @@
-import React, { useEffect } from 'react'
+import React, {useContext} from 'react'
 import { Author, ButtonForContent, CardCapsule, CardTrailOne, CircleCard, DividerCircle, DividerInfos, Evaluation, IdCard, InfosCard, TitleContent, TypeContent } from '../MenuTrail/style'
 import content from '../../images/content.png'
-import polygon from '../../images/polygon.png';
-import polygonDown from '../../images/polygon-down.png';
+import polygon from '../../images/polygon.png'
+import polygonDown from '../../images/polygon-down.png'
 import { useState } from 'react'
-import { DivContents, DividerSubtrails, DivPolygon, NameSubtrail, PositionDivPolygon} from './Style';
+import { DivContents, DividerSubtrails, DivPolygon, NameSubtrail } from './Style'
+import { useNavigate } from 'react-router-dom'
+import { GlobalContext } from '../../context/GlobalContext'
 
 
 
 
-export const DropDownSubtrail = ({trail}) => {
+export const DropDownSubtrail = ({subtrail}) => {
+  const { setParamContent } = useContext(GlobalContext)
+  const navigate = useNavigate();
+
+  const redirect = (id, url) => {
+    setParamContent(id)
+    navigate(url) 
+  };
 
   const [drop, setDrop] = useState(false)
 
   const changeDrop = () => setDrop(!drop)
 
-  useEffect(()=>{
-  },[]);
-
   return (
     <>
-      
       <DivPolygon onClick={changeDrop}>
         
         <DividerSubtrails/>
         <NameSubtrail>
-          <p>{trail.name}</p>
+          <p>{subtrail.name}</p>
           <img src={drop ? polygonDown : polygon} alt="" />
         </NameSubtrail>
         
       </DivPolygon>
       
       <DivContents drop={drop}>
-        {trail['conteúdos']?.map((_item,index) => (
-
+        {
+          subtrail.conteudos?.map((item,index) => (
           <CardCapsule key={index}>
 
             <CircleCard>
@@ -44,21 +49,20 @@ export const DropDownSubtrail = ({trail}) => {
             <CardTrailOne>
               <InfosCard>
                 <TypeContent>
-                  Glossário
+
+                  {item.type}
                 </TypeContent>
                 <TitleContent>
-                  Lorem ipsum Lorem ipsum
+                  {item.title}
                 </TitleContent>
                 <DividerInfos />
                 <Author>
-                  Gustavo Guanabara
+                  {item.author}
                 </Author>
               </InfosCard>
-              <a href="http://g1.com.br" target="_blank" rel="noreferrer">
-                <ButtonForContent src="jogoaberto.com" >
+                <ButtonForContent onClick={ () => redirect(item.id, '/conteudo')}>
                   <img src={content} alt="seta para acessar o conteúdo a ser estudado" />
                 </ButtonForContent>
-              </a>
             </CardTrailOne>
           </CardCapsule>
         ))
