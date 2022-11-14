@@ -7,6 +7,8 @@ export const GlobalContext = createContext({});
 export const GlobalProvider = ({ children }) => {
   const [trails, setTrails] = useState([]);
   const [trailsSelected, setSelectTrail] = useState([]);
+  const [paramContent, setParamContent] = useState([]);
+
   
   const navigate = useNavigate();
   
@@ -40,8 +42,8 @@ export const GlobalProvider = ({ children }) => {
       return trail;
     });
     setTrails(allTrailUser);
-    
   };
+
   useEffect(() => {
     requestTrailAllUser();
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -53,6 +55,8 @@ export const GlobalProvider = ({ children }) => {
       verifyLogin,
       trailsSelected,
       setSelectTrail,
+      paramContent,
+      setParamContent,
     }}>
       { children }
     </GlobalContext.Provider>
