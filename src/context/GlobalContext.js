@@ -39,7 +39,6 @@ export const GlobalProvider = ({ children }) => {
 
       return trail;
     });
-    console.log(allTrailUser)
     setTrails(allTrailUser);
     
   };

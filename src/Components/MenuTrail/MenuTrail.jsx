@@ -9,9 +9,7 @@ import { useEffect } from 'react'
 import { GlobalContext } from '../../context/GlobalContext'
 import polygon from '../../images/polygon.png'
 
-const CardTrail = () => {
-  const array = [1, 2, 3];
-  
+const CardTrail = () => {  
   const {trails} = useContext(GlobalContext)
 
   const [selectTrail, setselectTrail] = useState(0); 
@@ -33,8 +31,7 @@ const CardTrail = () => {
         <InputSelect>
           <select name="trails" value={selectTrail} onChange={changeSelect}>
           {
-          trails.length>0 &&
-          trails.map((trail)=>(
+          trails?.map((trail)=>(
             <option value={trail.id} key={trail.id}>
               Trilha {trail.name}
             </option>
@@ -48,8 +45,7 @@ const CardTrail = () => {
         </DivFilters>
         
         {
-          trails.length > 0 && trails.subtrilhas &&
-          trails.subtrilhas.map((trail, index) => (
+          trails[selectTrail]?.subtrilhas?.map((trail, index) => (
             <DropDownSubtrail key={index} trail={trail} />
           ))
         }

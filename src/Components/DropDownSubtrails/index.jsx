@@ -16,7 +16,6 @@ export const DropDownSubtrail = ({trail}) => {
   const changeDrop = () => setDrop(!drop)
 
   useEffect(()=>{
-    console.log(trail)
   },[]);
 
   return (
@@ -33,12 +32,12 @@ export const DropDownSubtrail = ({trail}) => {
       </DivPolygon>
       
       <DivContents drop={drop}>
-        {trail.conteudos.map((_item,index) => (
+        {trail['conteúdos']?.map((_item,index) => (
 
           <CardCapsule key={index}>
 
             <CircleCard>
-              <IdCard>10</IdCard>
+              <IdCard>{index+1}</IdCard>
               <DividerCircle />
               <Evaluation>★ 4.0</Evaluation>
             </CircleCard>
