@@ -33,7 +33,7 @@ export const ButtonAdd = styled.button`
  border-radius: 10px;
  margin-bottom: 10px;
 
- @media (min-width: 576px) {
+ @media (min-width: 768px) {
    width: 344px;
   }
 
@@ -58,4 +58,63 @@ export const Panel = styled.div`
  button:hover{
   cursor: pointer;
  }
+`
+
+// botão padrão para opção editar
+  export const ButtonEdit = styled.button`
+  background: none;
+  border: none;
+  &:hover{
+    cursor: pointer;
+  }
+`
+
+// Card para edição de Trilha
+export const CardTrail = styled.div`
+  padding: 10px;
+  width: 100%;
+  height: 60px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 0 4px #BABABA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+//Campo para edição de módulo
+export const CardModule = styled.div`
+  width: 100%;
+  height: 116px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 0 4px #BABABA;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+export const SubtrailAndEdit = styled.div`
+  padding: 0px 10px 20px 10px;
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  p{
+    font-weight: bold;
+  }
+`
+export const NameTrail = styled.div`
+  padding: 0 10px;
+  width: 100%;
+  background-color: #FFFFFF;
+  color: #767676;
+  border-radius: 8px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+ 
 `

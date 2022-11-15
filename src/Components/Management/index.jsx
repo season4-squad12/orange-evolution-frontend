@@ -2,7 +2,8 @@ import React from 'react'
 import { DividerContent } from '../ContentScreen/style'
 import { Header } from '../Header'
 import MenuAdmin from '../MenuAdmin'
-import { ButtonAdd, MainManagement, Panel } from './Style'
+import { ButtonAdd, ButtonEdit, CardModule, CardTrail, MainManagement, NameTrail, Panel, SubtrailAndEdit } from './Style'
+import iconEdit from '../../images/icon-edit.png'
 
 const Management = () => {
   return (
@@ -32,7 +33,26 @@ const Management = () => {
             </Panel>
           <DividerContent/>
           </div>
+          <CardTrail>
+          <p style={{fontWeight:'bold'}}>Trilha</p>
+          <ButtonEdit>
+            <img src={iconEdit} alt="" />
+          </ButtonEdit>
+          </CardTrail>
 
+          <CardModule>
+            <SubtrailAndEdit>
+              <p>Nome da subtrilha    </p>
+              <img src={iconEdit} alt="" />
+            </SubtrailAndEdit>
+            <p style={{alignSelf:'flex-start',marginLeft:'10px',color:'#767676'}}>Múdulo 01</p>
+            <DividerContent style={{width:'95%', margin:'5px 0'}}/>
+            <NameTrail>
+              <p>Trilha</p>
+              <p>Nome da trilha</p>
+            </NameTrail>
+          </CardModule>
+          
         </MainManagement>
       <MenuAdmin />
     </>
