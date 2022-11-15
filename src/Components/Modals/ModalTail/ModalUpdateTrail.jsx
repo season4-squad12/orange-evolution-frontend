@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import close from '../../../images/close.png';
 import { requestDeleteTrail, requestUpdateTrail, setToken } from '../../../services/api';
@@ -70,6 +71,10 @@ const ModalUpdateTrail = ({ isOpen, setIsOpen, trail }) => {
         console.log(e)
     }
   };
+
+  useEffect(()=>{
+    console.log(trail)
+  }, [])
 
   return (
     <Modal open={ isOpen }>

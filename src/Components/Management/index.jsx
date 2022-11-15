@@ -2,10 +2,113 @@ import React from 'react'
 import { DividerContent } from '../ContentScreen/style'
 import { Header } from '../Header'
 import MenuAdmin from '../MenuAdmin'
-import { ButtonAdd, ButtonEdit, CardContent, CardModule, CardTrail, MainManagement, NameContent, NameContentAndEdit, NameModule, NameTrail, Panel, SubtrailAndEdit } from './Style'
+import { ButtonAdd, ButtonEdit, CardContent, CardModule, CardTrail, MainManagement, NameContentAndEdit, NameModule, NameTrail, Panel, SubtrailAndEdit } from './Style'
 import iconEdit from '../../images/icon-edit.png'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { requestContentsAll, requestSubtrailsAll, requestTrailssAll, setToken } from '../../services/api'
+import { useEffect } from 'react'
+import ModalCreateSubtrail from '../Modals/ModalSubTrail/ModalCreateSubtrail'
+import ModalUpdateSubtrail from '../Modals/ModalSubTrail/ModalUpdateSubtrail'
+import ModalCreateTrail from '../Modals/ModalTail/ModalCreateTrail'
+import ModalUpdateTrail from '../Modals/ModalTail/ModalUpdateTrail'
+// import ModalCreateContent from '../Modals/ModalContent/ModalCreateContent'
+// import ModalUpdateContent from '../Modals/ModalContent/ModalUpdateContent'
 
 const Management = () => {
+  const [selectModo, setModo] = useState('Trilhas');
+  const [trails, setTrails] = useState([]);
+  const [subtrails, setSubtrails] = useState([]);
+  // const [contents, setContents] = useState([]);
+
+  //state para os modals trail
+  const [opCreateTrail, setOpCreateTrail] = useState(false);
+  const [opUpdateTrail, setOpUpdateTrail] = useState(false);
+
+  const [selectTrail, setSelectTrail] = useState({});
+
+  const openModalCreateTrail = () => {
+    setOpCreateTrail(true);
+  };
+
+  const openUpdatetrail = (trail) => {
+    setSelectTrail(()=> trail)
+    setOpUpdateTrail(true);
+  };
+
+/*   //state para os modals subtrails */
+  const [opCreateSubtrail, setOpCreateSubtrail] = useState(false);
+  const [opUpdateSubtrail, setOpUpdateSubtrail] = useState(false);
+
+   const [selectSubtrail, setSelectSubtrail] = useState({});
+   
+  const openModalCreateSutrail = () => {
+    setOpCreateTrail(true);
+  };
+
+  const openUpdateSutrail = (subtrail) => {
+    setSelectSubtrail(()=> subtrail)
+    setOpUpdateSubtrail(true);
+  };
+  //state para os content
+  /*const [opCreateContent, setOpCreateContent] = useState(false);
+  const [opUpdateContent, setOpUpdateContent] = useState(false); */
+
+  const changeModo = (modo) => {
+    setModo(modo)
+  };
+
+  const navigate = useNavigate();
+
+  const reqTrails = async () => {
+    const { user, token } =  JSON.parse(localStorage.getItem('user'));
+    if (!user) return navigate('/login');
+    try {
+      setToken(token);
+      const result = await requestTrailssAll();
+      if (result) {
+          setTrails(result);
+      }
+    } catch(e) {
+        console.log(e)
+    }
+  };
+
+  const reqSubtrails = async () => {
+    const { user, token } =  JSON.parse(localStorage.getItem('user'));
+    if (!user) return navigate('/login');
+    try {
+      setToken(token);
+      const result = await requestSubtrailsAll();
+      if (result) {
+          setSubtrails(result);
+      }
+    } catch(e) {
+        console.log(e)
+    }
+  };
+
+  /* const reqContents = async () => {
+    const { user, token } =  JSON.parse(localStorage.getItem('user'));
+    if (!user) return navigate('/login');
+    try {
+      setToken(token);
+      const result = await requestContentsAll();
+      if (result) {
+          setTrails(result);
+      }
+    } catch(e) {
+        console.log(e)
+    }
+  }; */
+
+  useEffect(() => {
+    // reqContents();
+    reqSubtrails();
+    reqTrails();
+  }, []);
+
+
   return (
     <>
       <Header />
@@ -15,19 +118,33 @@ const Management = () => {
             </p>
           <DividerContent />
           </div>
-          <ButtonAdd><p style={{color:'#FFFFFF', fontWeight:'bold',fontSize:'15px'}}>+ Adicionar</p></ButtonAdd>
+          
+          { selectModo === "Trilhas" && (
+            <ButtonAdd onClick={openModalCreateTrail}><p style={{color:'#FFFFFF', fontWeight:'bold',fontSize:'15px'}}>+ Adicionar Uma Nova Trilha</p></ButtonAdd>
+          )}
+
+          { selectModo === "Módulos" && (
+            <ButtonAdd><p style={{color:'#FFFFFF', fontWeight:'bold',fontSize:'15px'}}>+ Adicionar Um Novo Módulo</p></ButtonAdd>
+          )}
+
+          {
+            selectModo === "Conteúdos" && (
+              <ButtonAdd><p style={{color:'#FFFFFF', fontWeight:'bold',fontSize:'15px'}}>+ Adicionar Um Novo Conteúdo</p></ButtonAdd>
+            )
+          }
+
 
           <p>Painel de visualização</p>
 
           <div style={{width:'100%'}}>
             <Panel>
-              <button>
+              <button onClick={()=> changeModo('Trilhas') }>
               Trilhas
               </button>
-              <button>
+              <button onClick={()=> changeModo('Módulos') }>
               Módulos
               </button>
-              <button>
+              <button onClick={()=> changeModo('Conteúdos')}>
               Conteúdos
               </button>
             </Panel>
@@ -35,30 +152,39 @@ const Management = () => {
           </div>
 
           {/* Card gerenciamento de trilhas */}
-          <CardTrail>
-          <p style={{fontWeight:'bold'}}>Trilha</p>
-          <ButtonEdit>
-            <img src={iconEdit} alt="" />
-          </ButtonEdit>
-          </CardTrail>
+          { selectModo === "Trilhas" && (
+            trails.map((trail) => (
+              <CardTrail>
+              <p style={{fontWeight:'bold'}}>{trail.name}</p>
+              <ButtonEdit onClick={() => openUpdatetrail(trail)}>
+                <img src={iconEdit} alt="" />
+              </ButtonEdit>
+              </CardTrail>
+            ))
+          )}
 
           {/* Card gerenciamento de módulos */}
-          <CardModule>
-            <SubtrailAndEdit>
-              <p>Nome da subtrilha    </p>
-              <ButtonEdit>
-              <img src={iconEdit} alt="" />
-              </ButtonEdit>
-            </SubtrailAndEdit>
-            <p style={{alignSelf:'flex-start',marginLeft:'10px',color:'#767676'}}>Múdulo 01</p>
-            <DividerContent style={{width:'95%', margin:'5px 0'}}/>
-            <NameTrail>
-              <p>Trilha</p>
-              <p>Nome da trilha</p>
-            </NameTrail>
-          </CardModule>
-          
+          { selectModo === "Módulos" && (
+            subtrails.map((subtrail) => 
+              <CardModule>
+                <SubtrailAndEdit>
+                  <p>{subtrail.name} </p>
+                  <ButtonEdit onClick={() => openUpdateSutrail(subtrail)}>
+                  <img src={iconEdit} alt="" />
+                  </ButtonEdit>
+                </SubtrailAndEdit>
+                <p style={{alignSelf:'flex-start',marginLeft:'10px',color:'#767676'}}>Múdulo 01</p>
+                <DividerContent style={{width:'95%', margin:'5px 0'}}/>
+                <NameTrail>
+                  <p>Trilha</p>
+                  <p>Nome da trilha</p>
+                </NameTrail>
+              </CardModule>
+            )
+          )}
+
           {/* Card gerenciamento de conteúdo */}
+          { selectModo === "Conteúdos" && (
           <CardContent>
             <NameContentAndEdit>
               <p>Nome do conteúdo</p>
@@ -78,8 +204,11 @@ const Management = () => {
             <p>Nome do módulo</p>
             </NameModule>
           </CardContent>
-         
+          )}
         </MainManagement>
+        
+        <ModalCreateTrail isOpen={opCreateTrail} setIsOpen={setOpCreateTrail} />
+        <ModalUpdateTrail isOpen={opUpdateTrail} setIsOpen={setOpUpdateTrail} trail={selectTrail}/>
       <MenuAdmin />
     </>
   )

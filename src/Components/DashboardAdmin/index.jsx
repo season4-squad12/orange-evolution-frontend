@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Header } from '../Header';
 import fotoPerfil from '../../images/image-perfil.png';
@@ -11,7 +12,6 @@ import {
   CardDetails, DivProgress,
   Progress, DivStudent, DivFeedBack, Button
 } from './style';
-import ModalCreateSubtrail from '../Modals/ModalSubTrail/ModalCreateSubtrail';
 import { useNavigate } from 'react-router-dom';
 /* import ModalUpdateSubtrail from '../Modals/ModalSubTrail/ModalUpdateSubtrail';
 import ModalUpdateTrail from '../Modals/ModalTail/ModalUpdateTrail';
@@ -19,12 +19,7 @@ import ModalCreateContnet from '../Modals/ModalContent/ModalCreateContent'; */
 
 const DashboardAdmin = () => {
   const [trails, setTrail] = useState([]);
-  const [openSubCreate, setOpenSubCreate] = useState(false);
   const [dataUsers, setDataUsers] = useState([]);
-
-  const createsubTrail = () => {
-    setOpenSubCreate(true);
-  };
 
   const navigate = useNavigate();
 
@@ -55,9 +50,7 @@ const DashboardAdmin = () => {
     <>
     <Header />
     <Main>
-      <ModalCreateSubtrail isOpen={openSubCreate} setIsOpen={setOpenSubCreate} />
       <DivPerfil>
-        <button onClick={createsubTrail}>opensubtrail</button>
         <ImagePerfil src={fotoPerfil} alt="foto de perfil" />
         <div>
           <h1>Rodrigo Carvalho</h1>

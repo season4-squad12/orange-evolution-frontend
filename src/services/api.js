@@ -122,3 +122,20 @@ export const requestFeedback = async (body) => {
     const {data} = await api.get('/feedbacks');
     return data;
 };
+
+// Retorn todos os valores de cada endpoint específico
+
+export const requestContentsAll = async () => {
+    const {data} = await api.get('/contents');
+    return {data};
+};
+
+export const requestSubtrailsAll = async () => {
+    const {data} = await api.get('/subtrails');
+    return data;
+};
+
+export const requestTrailssAll = async () => {
+    const {data} = await api.get('/trails');
+    return data;
+};
