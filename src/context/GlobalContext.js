@@ -1,6 +1,6 @@
 import React, { createContext, useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { setToken, validateLogin, requestSubtrail, requestTrailsUser } from "../services/api";
+import { setToken, validateLogin, requestSubtrail, requestTrailsUser, requestFeedback } from "../services/api";
 export const GlobalContext = createContext({});
 
 
@@ -9,10 +9,11 @@ export const GlobalProvider = ({ children }) => {
   const [trailsSelected, setSelectTrail] = useState([]);
   const [paramContent, setParamContent] = useState({});
   const [userLogin, setuserLogin] = useState({});
+  const [feedbacks, setFeedbacks] = useState([]);
 
   
   const navigate = useNavigate();
-  
+    
   const verifyLogin = async () => {
     const { user } =  JSON.parse(localStorage.getItem('user'));
     if (!user) return navigate('/login');
@@ -22,6 +23,20 @@ export const GlobalProvider = ({ children }) => {
       await validateLogin();
     } catch (e) {
       navigate('/login');
+    }
+  };
+
+  const requestFeedbacksAll = async () => {
+    const { user, token } =  JSON.parse(localStorage.getItem('user'));
+    if (!user) return navigate('/login');
+    try {
+      setToken(token);
+      const result = await requestFeedback();
+      if (result) {
+        setFeedbacks(result);
+      }
+    } catch(e) {
+        console.log(e)
     }
   };
   
@@ -48,8 +63,10 @@ export const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     requestTrailAllUser();
+    requestFeedbacksAll()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return(
     <GlobalContext.Provider value={{
       trails,
@@ -61,6 +78,7 @@ export const GlobalProvider = ({ children }) => {
       setParamContent,
       userLogin,
       setuserLogin,
+      feedbacks
     }}>
       { children }
     </GlobalContext.Provider>

@@ -228,12 +228,28 @@ export const DivStudent = styled.div`
   }
 `;
 
-export const DivFeedBack = styled.div`
+export const DivHeaderFeedback = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  margin-bottom: 50px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+
+  button {
+    font-family: 'Montserrat', sans-serif;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 59px;
+    height: 15px;
+    color: #767676;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+  }
 
   h2 {
     font-family: 'Montserrat', sans-serif;
@@ -242,11 +258,14 @@ export const DivFeedBack = styled.div`
     font-size: 15px;
     line-height: 18px;
     color: #001024;
-    margin-top: 40px;
-    margin-left: 17px;
-    margin-bottom: 20px;
     align-self: start;
   }
+`
+export const DivFeedBack = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 50px;
 
   div {
     width: 90%;
@@ -255,6 +274,7 @@ export const DivFeedBack = styled.div`
     justify-content: space-between;
     height: 35px;
     border-bottom: 0.5px solid #001024;
+    font-family: 'Montserrat', sans-serif;
 
     h5 {
       font-family: 'Montserrat', sans-serif;

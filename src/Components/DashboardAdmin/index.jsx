@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Header } from '../Header';
 import fotoPerfil from '../../images/image-perfil.png';
 import { requestDataUsers, requestTrailsHome, setToken } from '../../services/api';
@@ -9,19 +9,22 @@ import MenuAdmin from '../MenuAdmin';
 import {
   Main, DivPerfil, ImagePerfil, 
   Dashboard, DivCarrosel,
-  CardDetails, DivProgress,
+  CardDetails, DivProgress, DivHeaderFeedback,
   Progress, DivStudent, DivFeedBack, Button
 } from './style';
-import { useNavigate } from 'react-router-dom';
-/* import ModalUpdateSubtrail from '../Modals/ModalSubTrail/ModalUpdateSubtrail';
-import ModalUpdateTrail from '../Modals/ModalTail/ModalUpdateTrail';
-import ModalCreateContnet from '../Modals/ModalContent/ModalCreateContent'; */
+import { redirect, useNavigate } from 'react-router-dom';
+import { GlobalContext } from '../../context/GlobalContext';
 
 const DashboardAdmin = () => {
+  const {feedbacks} = useContext(GlobalContext);
   const [trails, setTrail] = useState([]);
   const [dataUsers, setDataUsers] = useState([]);
 
   const navigate = useNavigate();
+
+  const redirect = (url) => {
+    navigate(url)
+  };
 
   const requestTrails = async () => {
     const response = await requestTrailsHome();
@@ -40,9 +43,14 @@ const DashboardAdmin = () => {
     }
   };
 
+  const logout = () => {
+    localStorage.removeItem('user');
+    navigate('/login')
+  };
+
   useEffect(() => {
     requestUsers();
-    requestTrails()
+    requestTrails();
   }, [])
 
   return (
@@ -118,12 +126,17 @@ const DashboardAdmin = () => {
           </DivCarrosel>
       </DivStudent>
       <DivFeedBack>
-        <h2>FeedBack dos Alunos(09)</h2>
-        <div><h5>01 - Fundamentos de UX (User...</h5><p>Visualizar</p></div>
-        <div><h5>02 - Fundamentos de UX (User...</h5><p>Visualizar</p></div>
-        <div><h5>03 - Fundamentos de UX (User...</h5><p>Visualizar</p></div>
+        <DivHeaderFeedback>
+          <h2>FeedBack dos Alunos({feedbacks.length})</h2>
+          <button onClick={() => redirect('/feedbacks')}>Ver todos</button>
+        </DivHeaderFeedback>
+        { feedbacks.length > 0 && (
+          feedbacks.slice(0, 3).map((feedback, index) => (
+            <div key={index}><h5>{index} - {feedback.subtrail}</h5><p>Visualizar</p></div>
+          ))
+        )}
       </DivFeedBack>
-      <Button>Sair da Plataforma</Button> 
+      <Button onClick={ logout }>Sair da Plataforma</Button> 
     </Main>
     <MenuAdmin />
     </>

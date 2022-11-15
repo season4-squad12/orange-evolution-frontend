@@ -8,8 +8,15 @@ import {
   Main, ProgressAll, TrailSelected, GridCard, Card, Divser,
   Progress, ButtomSum, CompletedTrail, LineDiviser, Studying,
   ProgressTrail, Button} from './style';
+import { useNavigate } from "react-router-dom";
 
 const DashboardUser = () => {
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.removeItem('user');
+    navigate('/login')
+  };
+
   return (
     <Main>
       <Header />
@@ -76,7 +83,7 @@ const DashboardUser = () => {
           <span>Fundamentos UX - UX/UI</span>
         </ProgressTrail>
       </Studying>
-      <Button>Sair da Plataforma</Button>
+      <Button onClick={ logout }>Sair da Plataforma</Button>
       <MenuFooter />
     </Main>
   )
