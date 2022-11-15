@@ -19,11 +19,8 @@ const CardTrail = () => {
 
   return (
     <>
-      <Header>
-        <TopMenu>teste</TopMenu>
-      </Header>
-      <main>  
-        
+      <Header />
+      <main>    
       <MainCardTrails>
         <DivFilters>
         {/* <div> */}
