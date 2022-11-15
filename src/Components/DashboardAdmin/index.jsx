@@ -41,7 +41,6 @@ const DashboardAdmin = () => {
   };
 
   useEffect(() => {
-    console.log(dataUsers)
     requestUsers();
     requestTrails()
   }, [])

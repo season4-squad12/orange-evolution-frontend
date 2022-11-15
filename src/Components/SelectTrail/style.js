@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Main = styled.main`
   background: linear-gradient(55.27deg, #FA8ECF 0%, #F225C0 8%, #AA1CCC 32%, #8819D2 45%, #2E87AE 80%, #00C19C 100%);
   width: 100vw;
-  height: 100vh;  
 `;
 
 export const Section = styled.section`

@@ -12,14 +12,15 @@ import { Main, Card, ButtonFooter, Button, CardForm, Input } from './style';
 const Login = () => {
     document.title = 'Login';
     const {setuserLogin} = useContext(GlobalContext);
-    const redirect = (url) => {
-        navigate(url);
-    };
-
+    
     const [valueEmail, setEmail] = useState('');
     const [valuePassword, setPassword] = useState('');
 
     const navigate = useNavigate();
+
+    const redirect = (url) => {
+        navigate(url);
+    };
 
     const handleChangeEmail = ({ target: { value } }) => {
         setEmail(value);

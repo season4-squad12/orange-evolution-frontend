@@ -29,13 +29,13 @@ export const Header = () => {
         <div>
           <button 
             onClick={ () => redirect('/dashboard')}
-            active={ window.location.pathname === "/dashboard" && true}
+            active={ window.location.pathname === "/dashboard" && 'true'}
           >
             Dashboard
           </button>
           <button 
-            onClick={ () => redirect('/dashboard')}
-            active={ window.location.pathname === "/admin" && true}
+            onClick={ () => redirect('/gerenciamento')}
+            active={ window.location.pathname === "/admin" && 'true'}
           >
             Admin
           </button>
