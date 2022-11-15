@@ -101,7 +101,6 @@ const DashboardAdmin = () => {
         <div><h5>03 - Fundamentos de UX (User...</h5><p>Visualizar</p></div>
       </DivFeedBack>
       <Button>Sair da Plataforma</Button> 
-      <MenuAdmin />
     </Main>
   );
 };

@@ -49,8 +49,8 @@ export const DivPerfil = styled.div`
 `;
 
 export const ImagePerfil = styled.img`
-  width: 74px;
-  height: 74px;
+  width: 97px !important;
+  height: 97px !important;
   margin-left: 16px;
   border: 4px solid #00c09b;
   border-radius: 48.5px;
