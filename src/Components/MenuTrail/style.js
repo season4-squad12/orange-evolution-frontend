@@ -83,26 +83,28 @@ export const CardTrailOne = styled.section`
   border: 5px solid #420C66;
   border-radius: 10px;
   padding-right: 5px;
+
  `;
 
 export const CardCapsule = styled.section`
 margin-top: 10px;
 margin-right: 10px;
 display: flex;
+width: 100%; //teste
 align-items: center;
 &:first-child{
   position: relative;
 
   @media (max-width: 576px) {
-    width: 328px;
+    /* width: 328px; */
   }
 
  @media (min-width: 576px) and (max-width: 767.98px) {
-   width: 576px;
+   /* width: 576px; */
   }
 
   @media (min-width: 768px) and (max-width: 1200px) {
-   width: 768px;
+   /* width: 768px; */
   }
 }
 `
@@ -125,9 +127,12 @@ const MainCardTrails = styled.section`
 
  @media (min-width: 576px) and (max-width: 767.98px) {
    width: 576px;
-  }
+  }  
 
-  @media (min-width: 768px) and (max-width: 1200px) {
+  @media (min-width: 767.99px) and (max-width: 991.98px) {
+   width: 576px;
+  }
+  @media (min-width: 991.99px) {
    width: 768px;
   }
 

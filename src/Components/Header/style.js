@@ -7,7 +7,7 @@ export const HeaderApp = styled.header`
   justify-content: space-between;
   height: 80px;
   width: 100%;
-
+  min-width: 330px;
   
   @media (min-width: 768px) and (max-width: 991.98px) {
     img {

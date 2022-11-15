@@ -10,6 +10,7 @@ export const Menu = styled.footer`
   width: 100vw;
   height: 80px;
   background-color: #001024;
+  min-width: 330px;
 
   p {
     font-family: 'Montserrat', sans-serif;
