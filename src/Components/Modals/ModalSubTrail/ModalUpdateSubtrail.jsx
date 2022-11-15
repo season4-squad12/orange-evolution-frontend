@@ -1,6 +1,8 @@
 import React, { useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import close from '../../../images/close.png';
 import polygon from '../../../images/polygon-down.png';
+import { requestDeleteSubtrail, requestUpdateSubTrail, setToken } from '../../../services/api';
 import { 
   Button, Input, Label, Modal, ModalContainer,
   ModalHeader, ModalBody, DivMenu, Card,
@@ -27,6 +29,39 @@ const ModalCreateSubtrail = ({ isOpen, setIsOpen, subtrail }) => {
   const closeModal = () => {
     setIsOpen(false);
   }
+  const navigate = useNavigate();
+
+  const deleteContent = async () => {
+    const { user, token } =  JSON.parse(localStorage.getItem('user'));
+    if (!user) return navigate('/login');
+    try {
+      setToken(token)
+      const result = await requestDeleteSubtrail(subtrail.id);
+      if (result) {
+          closeModal();
+      }
+  } catch(e) {
+      console.log(e)
+  }
+  };
+
+  const submitForm = async() => {
+    const { user, token } =  JSON.parse(localStorage.getItem('user'));
+    if (!user) return navigate('/login');
+    try {
+      setToken(token);
+      const result = await requestUpdateSubTrail({
+          name,
+          description,
+          idTrail: valueTrail,
+        });
+      if (result) {
+          closeModal()
+      }
+    } catch(e) {
+        console.log(e)
+    }
+  };
 
   return (
     <Modal open={ isOpen }>
@@ -67,7 +102,8 @@ const ModalCreateSubtrail = ({ isOpen, setIsOpen, subtrail }) => {
               </SelectForm>
             </Label>
             <ModalFooter positionButton="end">
-              <Button bgColor="#00856C" margin="0 15px 0 0">Adicionar</Button>
+              <Button bgColor="#FF0000" margin="0 0 0 15px" onChange={deleteContent}>Excluir</Button>
+              <Button bgColor="#00856C" margin="0 15px 0 0" onClick={submitForm}>Adicionar</Button>
             </ModalFooter>
             
         </ModalBody>

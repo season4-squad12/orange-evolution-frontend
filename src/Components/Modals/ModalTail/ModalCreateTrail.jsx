@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import close from '../../../images/close.png';
+import { requestCreateTrail, setToken } from '../../../services/api';
 import { 
   Button, Input, Label, Modal, ModalContainer,
   ModalHeader, ModalBody, DivMenu, Card,
@@ -31,6 +33,30 @@ const ModalCreateTrail = ({ isOpen, setIsOpen }) => {
   const closeModal = () => {
     setIsOpen(false);
   }
+
+  const navigate = useNavigate();
+
+  const submitForm = async() => {
+    const { user, token } =  JSON.parse(localStorage.getItem('user'));
+    if (!user) return navigate('/login');
+    try {
+      setToken(token);
+      const result = await requestCreateTrail({
+          name,
+          description,
+          question,
+          response,
+          icone: '',
+          color: '#001024',
+        });
+      if (result) {
+          closeModal()
+      }
+    } catch(e) {
+        console.log(e)
+    }
+  };
+  
 
   return (
     <Modal open={ isOpen }>
@@ -70,9 +96,7 @@ const ModalCreateTrail = ({ isOpen, setIsOpen }) => {
               <TextArea name="response" value={response} onChange={changeResponse} />
             </Label>
             <ModalFooter positionButton="space-between">
-              <Button bgColor="#FF0000" margin="0 0 0 15px">Excluir</Button>
-              <Button bgColor="#00856C" margin="0 15px 0 0">Adicionar</Button>
-
+              <Button bgColor="#00856C" margin="0 15px 0 0" onClick={submitForm}>Adicionar</Button>
             </ModalFooter>
             
         </ModalBody>

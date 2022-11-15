@@ -6,6 +6,8 @@ import {
   ModalHeader, ModalBody, DivMenu, Card,
   TextArea, SelectForm, DivDuoSelect, ModalFooter,
 } from '../../../styles/Modal';
+import { requestCreateContent, setToken } from '../../../services/api';
+import { useNavigate } from 'react-router-dom';
 
 const ModalCreateContnet = ({ isOpen, setIsOpen }) => {
   const [ selectSubTrail, setSelectSubtrail] = useState('')
@@ -15,7 +17,7 @@ const ModalCreateContnet = ({ isOpen, setIsOpen }) => {
   const [valueAuthor, setValueAuthor] = useState('');
   const [valueDuration, setValueDuration] = useState('');
   const [valueLink, setValueLink] = useState('');
-
+  
   const changeSubtrail = ({ target: { value }}) => {
     setSelectSubtrail(() => value)
   };
@@ -47,6 +49,32 @@ const ModalCreateContnet = ({ isOpen, setIsOpen }) => {
   const closeModal = () => {
     setIsOpen(false);
   }
+
+  const navigate = useNavigate();
+
+  const submitForm = async() => {
+    const { user, token } =  JSON.parse(localStorage.getItem('user'));
+    if (!user) return navigate('/login');
+    try {
+      setToken(token);
+      const result = await requestCreateContent({
+          name: valueTitle,
+          description: valueDescription,
+          type: valueType,
+          author: valueAuthor,
+          duration: valueDuration,
+          status: '',
+          link: valueLink,
+          idUser: user.id,
+          experience: 0,
+        });
+      if (result) {
+          closeModal()
+      }
+    } catch(e) {
+        console.log(e)
+    }
+  };
 
   return (
     <Modal open={ isOpen }>
@@ -113,7 +141,12 @@ const ModalCreateContnet = ({ isOpen, setIsOpen }) => {
             </Label>
             </DivDuoSelect>
             <ModalFooter positionButton="end">
-              <Button bgColor="#00856C" margin="0 15px 0 0">Adicionar</Button>
+              <Button 
+                bgColor="#00856C" margin="0 15px 0 0"
+                onClick={submitForm}
+              >
+                Adicionar
+              </Button>
 
             </ModalFooter>
             

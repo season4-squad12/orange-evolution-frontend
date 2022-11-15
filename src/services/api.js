@@ -38,6 +38,7 @@ export const requestSubtrail = async (id) => {
     const { data } = await api.get(`/subtrails/${id}`);
     return data;
 };
+
 export const requestSelectTrails = async (body) => {
     const { data } = await api.post('/usertrails', body);
     return data;
@@ -46,5 +47,55 @@ export const requestSelectTrails = async (body) => {
 // EndPoint Users
 export const requestCreateUser = async (body) => {
     const { data } = await api.post('/users', body);
+    return data;
+};
+
+// Criar e atulizar Trail, SubTrails e Contents
+
+// Trails
+export const requestUpdateTrail = async (id, body) => {
+    const {data } = await api.put(`/trails/${id}`, body);
+    return data;
+};
+
+export const requestDeleteTrail = async (id) => {
+    const {data } = await api.delete(`/trails/${id}`);
+    return data;
+};
+
+export const requestCreateTrail = async (body) => {
+    const {data} = await api.post('/trails',body);
+    return data;
+};
+
+//Subtrails
+export const requestUpdateSubTrail = async (id, body) => {
+    const {data} = await api.put(`/subtrails/${id}`, body)
+    return data;
+};
+
+export const requestDeleteSubtrail = async (id) => {
+    const {data } = await api.delete(`/subtrails/${id}`);
+    return data;
+};
+
+export const requestCreateSubTrail = async (body) => {
+    const {data} = await api.post('subtrails', body);
+    return data;
+};
+
+//Content
+export const requestUpdateContent = async (id, body) => {
+    const {data } = await api.put(`/contents/${id}`, body)
+    return data;
+};
+
+export const requestDeleteContent = async (id) => {
+    const {data } = await api.delete(`/contents/${id}`);
+    return data;
+};
+
+export const requestCreateContent = async (body) => {
+    const {data} = await api.post('/contents', body);
     return data;
 };

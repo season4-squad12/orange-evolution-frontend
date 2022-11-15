@@ -46,7 +46,6 @@ import { requestCreateUser } from "../../services/api";
         } catch(e) {
             console.log(e)
         }
-
     };
 
     return (

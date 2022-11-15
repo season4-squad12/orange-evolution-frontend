@@ -1,7 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import close from '../../../images/close.png';
 import polygon from '../../../images/polygon-down.png';
+import { requestDeleteContent, requestUpdateContent, setToken } from '../../../services/api';
 import { 
   Button, Input, Label, Modal, ModalContainer,
   ModalHeader, ModalBody, DivMenu, Card,
@@ -49,6 +51,45 @@ const ModalUpdateContent = ({ isOpen, setIsOpen, content }) => {
     setValueLink(() => value)
   };
 
+  const navigate = useNavigate();
+
+  const deleteContent = async () => {
+    const { user, token } =  JSON.parse(localStorage.getItem('user'));
+    if (!user) return navigate('/login');
+    try {
+      setToken(token)
+      const result = await requestDeleteContent(content.id);
+      if (result) {
+          closeModal();
+      }
+  } catch(e) {
+      console.log(e)
+  }
+  };
+
+  const submitForm = async() => {
+    const { user, token } =  JSON.parse(localStorage.getItem('user'));
+    if (!user) return navigate('/login');
+    try {
+      setToken(token);
+      const result = await requestUpdateContent({
+          name: valueTitle,
+          description: valueDescription,
+          type: valueType,
+          author: valueAuthor,
+          duration: valueDuration,
+          status: '',
+          link: valueLink,
+          idUser: user.id,
+          experience: 0,
+        });
+      if (result) {
+          closeModal()
+      }
+    } catch(e) {
+        console.log(e)
+    }
+  };
 
   return (
     <Modal open={ isOpen }>
@@ -115,9 +156,8 @@ const ModalUpdateContent = ({ isOpen, setIsOpen, content }) => {
             </Label>
             </DivDuoSelect>
             <ModalFooter positionButton="space-between">
-              <Button bgColor="#FF0000" margin="0 0 0 15px">Excluir</Button>
-              <Button bgColor="#00856C" margin="0 15px 0 0">Adicionar</Button>
-
+              <Button bgColor="#FF0000" margin="0 0 0 15px" onChange={deleteContent}>Excluir</Button>
+              <Button bgColor="#00856C" margin="0 15px 0 0" onClick={submitForm}>Adicionar</Button>
             </ModalFooter>
             
         </ModalBody>

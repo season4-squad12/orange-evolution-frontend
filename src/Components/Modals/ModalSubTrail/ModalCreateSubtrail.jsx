@@ -1,6 +1,8 @@
 import React, { useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import close from '../../../images/close.png';
 import polygon from '../../../images/polygon-down.png';
+import { requestCreateSubTrail, setToken } from '../../../services/api';
 import { 
   Button, Input, Label, Modal, ModalContainer,
   ModalHeader, ModalBody, DivMenu, Card,
@@ -27,6 +29,26 @@ const ModalCreateSubtrail = ({ isOpen, setIsOpen }) => {
   const closeModal = () => {
     setIsOpen(false);
   }
+
+  const navigate = useNavigate();
+
+  const submitForm = async() => {
+    const { user, token } =  JSON.parse(localStorage.getItem('user'));
+    if (!user) return navigate('/login');
+    try {
+      setToken(token);
+      const result = await requestCreateSubTrail({
+          name: valueTitle,
+          description: valueDescription,
+          idTrail: valueTrail,
+        });
+      if (result) {
+          closeModal()
+      }
+    } catch(e) {
+        console.log(e)
+    }
+  };
 
   return (
     <Modal open={ isOpen }>
@@ -67,7 +89,7 @@ const ModalCreateSubtrail = ({ isOpen, setIsOpen }) => {
               </SelectForm>
             </Label>
             <ModalFooter positionButton="end">
-              <Button bgColor="#00856C" margin="0 15px 0 0">Adicionar</Button>
+              <Button bgColor="#00856C" margin="0 15px 0 0" onClick={submitForm}>Adicionar</Button>
             </ModalFooter>
             
         </ModalBody>
