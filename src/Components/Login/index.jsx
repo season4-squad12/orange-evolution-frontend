@@ -33,7 +33,7 @@ const Login = () => {
             const user = await requestLogin({ email: valueEmail, password: valuePassword });
             if (user) {
                 localStorage.setItem('user', JSON.stringify(user));
-                navigate('/dashboard');
+                navigate('/trilhas');
             }
         } catch (e) {
             console.log(e)
