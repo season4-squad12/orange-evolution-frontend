@@ -7,6 +7,7 @@ import MenuTrails from './Components/MenuTrail/MenuTrail';
 import ContentScreen from './Components/ContentScreen';
 import { SelectTrail } from './Components/SelectTrail';
 import DashboardAdmin from './Components/DashboardAdmin';
+import Management from './Components/Management';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path='/perfil' element={ <DashboardUser />} />
       <Route path="selecionar-trilha" element={<SelectTrail />} />
       <Route path='dashboard' element={<DashboardAdmin />} />
+      <Route path='/gerenciamento' element={<Management />} />
       <Route path="*" element={<Login />} />
     </Routes>
   );
