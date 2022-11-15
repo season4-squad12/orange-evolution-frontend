@@ -2,7 +2,6 @@ import React from 'react'
 import { ButtonFooter, Navegation } from './style'
 import trails from '../../images/trilhas-footer.png'
 import user from '../../images/user-footer.png'
-import ranking from '../../images/ranking-footer.png'
 
 
 const MenuFooter = () => {

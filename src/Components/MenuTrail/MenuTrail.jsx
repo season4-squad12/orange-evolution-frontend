@@ -7,6 +7,7 @@ import {InputSelect} from '../../styles/InputSelect'
 import { useState } from 'react'
 import { GlobalContext } from '../../context/GlobalContext'
 import polygon from '../../images/polygon.png'
+import TopMenu from '../TopMenu'
 
 const CardTrail = () => {  
   const {trails} = useContext(GlobalContext)
@@ -18,8 +19,11 @@ const CardTrail = () => {
 
   return (
     <>
-      <Header /> 
-      <main>    
+      <Header>
+        <TopMenu>teste</TopMenu>
+      </Header>
+      <main>  
+        
       <MainCardTrails>
         <DivFilters>
         {/* <div> */}
