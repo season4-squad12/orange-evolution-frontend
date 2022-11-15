@@ -49,11 +49,11 @@ margin-right: auto;
     width: 328px;
   }
 
- @media (min-width: 576px) and (max-width: 767.98px) {
+ @media (min-width: 576px) and (max-width: 800px) {
    width: 576px;
   }
 
-  @media screen and (min-width: 768px) and (max-width: 2000px) {
+  @media (min-width: 800.1px) {
    max-width: 691px;
   }
 `
