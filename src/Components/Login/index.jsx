@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { GlobalContext } from "../../context/GlobalContext";
 import { requestLogin } from "../../services/api";
 import Logo from '../../images/logo-orange-evolution.png'
 import Voltar from '../../images/voltar-icone.png'
@@ -10,7 +11,7 @@ import { Main, Card, ButtonFooter, Button, CardForm, Input } from './style';
 
 const Login = () => {
     document.title = 'Login';
-
+    const {setuserLogin} = useContext(GlobalContext);
     const redirect = (url) => {
         navigate(url);
     };
@@ -32,6 +33,7 @@ const Login = () => {
         try{
             const user = await requestLogin({ email: valueEmail, password: valuePassword });
             if (user) {
+                setuserLogin({user});
                 localStorage.setItem('user', JSON.stringify(user));
                 navigate('/trilhas');
             }

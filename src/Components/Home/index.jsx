@@ -48,7 +48,7 @@ const Home = () => {
         </CardList>
       </Main>
       <Footer>
-        <Button onClick={ () => redirect('/registrar')} color="white" background="#00C19C">REGISTRAR</Button>
+        <Button onClick={ () => redirect('/registrar')} color="white" background="#00856C">REGISTRAR</Button>
         <Button onClick={ () => redirect('/login')} color="#001024" background="">LOGAR</Button>
       </Footer>
     </>

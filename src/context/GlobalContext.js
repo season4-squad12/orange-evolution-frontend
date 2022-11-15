@@ -8,6 +8,7 @@ export const GlobalProvider = ({ children }) => {
   const [trails, setTrails] = useState([]);
   const [trailsSelected, setSelectTrail] = useState([]);
   const [paramContent, setParamContent] = useState([]);
+  const [userLogin, setuserLogin] = useState({});
 
   
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ export const GlobalProvider = ({ children }) => {
   const verifyLogin = async () => {
     const { user } =  JSON.parse(localStorage.getItem('user'));
     if (!user) return navigate('/login');
+    setuserLogin(user);
     try {
       setToken(user.token);
       await validateLogin();
@@ -57,6 +59,8 @@ export const GlobalProvider = ({ children }) => {
       setSelectTrail,
       paramContent,
       setParamContent,
+      userLogin,
+      setuserLogin,
     }}>
       { children }
     </GlobalContext.Provider>

@@ -45,7 +45,7 @@ export const Button = styled.button`
   }
 `;
 export const ButtonAction = styled.button`
-  background-color: #00C19C;
+  background-color: #00856C;
   border: none;
   color: white;
   
@@ -107,6 +107,7 @@ export const Footer = styled.footer`
 `;
 
 export const Main = styled.main`
+  font-family: 'Montserrat', sans-serif;
   display:  flex;
   justify-content: center;
   align-items: center;
@@ -132,7 +133,7 @@ export const Banner = styled.section`
   background-blend-mode: darken;
 
   h1 {
-    color: #00C09B;
+    color: #00856C;
   }
 
   h2 {

@@ -17,9 +17,9 @@ function App() {
       <Route path='/registrar' element={<Register />}/>
       <Route path='/trilhas' element={ <MenuTrails />} />
       <Route path='/conteudo' element={ <ContentScreen /> } />
-      <Route path='/perfil' element={ <DashboardUser />} />
       <Route path="selecionar-trilha" element={<SelectTrail />} />
       <Route path='dashboard' element={<DashboardAdmin />} />
+      <Route path='/perfil' element={ <DashboardUser />} />
       <Route path='/gerenciamento' element={<Management />} />
       <Route path="*" element={<Login />} />
     </Routes>
