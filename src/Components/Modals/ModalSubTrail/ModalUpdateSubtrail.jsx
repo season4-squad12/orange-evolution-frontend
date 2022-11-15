@@ -67,7 +67,7 @@ const ModalCreateSubtrail = ({ isOpen, setIsOpen, subtrail }) => {
     <Modal open={ isOpen }>
       <ModalContainer>
         <ModalHeader>
-            <h2>Adicinar Nova Módulo</h2>
+            <h2>Editar Módulo</h2>
             <button onClick={ closeModal }>
               <img src={close} alt="botao de fechar modal" />
             </button>

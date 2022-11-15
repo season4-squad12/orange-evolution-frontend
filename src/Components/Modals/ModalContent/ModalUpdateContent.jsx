@@ -8,7 +8,7 @@ import {
   Button, Input, Label, Modal, ModalContainer,
   ModalHeader, ModalBody, DivMenu, Card,
   TextArea, SelectForm, DivDuoSelect, ModalFooter,
-} from '../../../styles/style';
+} from '../../../styles/Modal';
 
 const ModalUpdateContent = ({ isOpen, setIsOpen, content }) => {
   const [ selectSubTrail, setSelectSubtrail] = useState('Módulo')
