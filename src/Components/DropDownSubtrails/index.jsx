@@ -9,9 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import { GlobalContext } from '../../context/GlobalContext'
 
 
-
-
-export const DropDownSubtrail = ({subtrail}) => {
+export const DropDownSubtrail = ({subtrail, trail}) => {
   const { setParamContent } = useContext(GlobalContext)
   const navigate = useNavigate();
 
@@ -60,7 +58,7 @@ export const DropDownSubtrail = ({subtrail}) => {
                   {item.author}
                 </Author>
               </InfosCard>
-                <ButtonForContent onClick={ () => redirect(item.id, '/conteudo')}>
+                <ButtonForContent onClick={ () => redirect({id: item.id, subtrail: subtrail.name, index: index+1, trail: trail}, '/conteudo')}>
                   <img src={content} alt="seta para acessar o conteúdo a ser estudado" />
                 </ButtonForContent>
             </CardTrailOne>

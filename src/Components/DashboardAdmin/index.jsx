@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Header } from '../Header';
 import fotoPerfil from '../../images/image-perfil.png';
-import { requestTrailsHome } from '../../services/api';
+import { requestDataUsers, requestTrailsHome, setToken } from '../../services/api';
 import { InputSelect } from '../../styles/InputSelect';
 import polygon from '../../images/polygon.png';
 import MenuAdmin from '../MenuAdmin';
@@ -12,6 +12,7 @@ import {
   Progress, DivStudent, DivFeedBack, Button
 } from './style';
 import ModalCreateSubtrail from '../Modals/ModalSubTrail/ModalCreateSubtrail';
+import { useNavigate } from 'react-router-dom';
 /* import ModalUpdateSubtrail from '../Modals/ModalSubTrail/ModalUpdateSubtrail';
 import ModalUpdateTrail from '../Modals/ModalTail/ModalUpdateTrail';
 import ModalCreateContnet from '../Modals/ModalContent/ModalCreateContent'; */
@@ -19,24 +20,42 @@ import ModalCreateContnet from '../Modals/ModalContent/ModalCreateContent'; */
 const DashboardAdmin = () => {
   const [trails, setTrail] = useState([]);
   const [openSubCreate, setOpenSubCreate] = useState(false);
+  const [dataUsers, setDataUsers] = useState([]);
 
   const createsubTrail = () => {
     setOpenSubCreate(true);
   };
+
+  const navigate = useNavigate();
 
   const requestTrails = async () => {
     const response = await requestTrailsHome();
     setTrail(response);
   };
 
+  const requestUsers = async () => {
+    const { user, token } =  JSON.parse(localStorage.getItem('user'));
+    if (!user) return navigate('/login');
+    try {
+      setToken(token);
+      const requestUsers = await requestDataUsers();
+      setDataUsers(requestUsers);
+    } catch(e) {
+        console.log(e)
+    }
+  };
+
   useEffect(() => {
+    console.log(dataUsers)
+    requestUsers();
     requestTrails()
   }, [])
 
   return (
+    <>
+    <Header />
     <Main>
       <ModalCreateSubtrail isOpen={openSubCreate} setIsOpen={setOpenSubCreate} />
-      <Header />
       <DivPerfil>
         <button onClick={createsubTrail}>opensubtrail</button>
         <ImagePerfil src={fotoPerfil} alt="foto de perfil" />
@@ -89,7 +108,7 @@ const DashboardAdmin = () => {
 
         <DivCarrosel>
             <CardDetails color="#420C66" textColor="#fff">
-              <h4>15</h4>
+              <h4>{dataUsers.length}</h4>
               <p>Alunos Cadastrados</p>
             </CardDetails>
             <CardDetails color="#420C66" textColor="#fff">
@@ -114,6 +133,8 @@ const DashboardAdmin = () => {
       </DivFeedBack>
       <Button>Sair da Plataforma</Button> 
     </Main>
+    <MenuAdmin />
+    </>
   );
 };
 

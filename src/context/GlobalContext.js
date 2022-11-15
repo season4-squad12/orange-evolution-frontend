@@ -7,7 +7,7 @@ export const GlobalContext = createContext({});
 export const GlobalProvider = ({ children }) => {
   const [trails, setTrails] = useState([]);
   const [trailsSelected, setSelectTrail] = useState([]);
-  const [paramContent, setParamContent] = useState([]);
+  const [paramContent, setParamContent] = useState({});
   const [userLogin, setuserLogin] = useState({});
 
   

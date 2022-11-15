@@ -35,7 +35,12 @@ const Login = () => {
             if (user) {
                 setuserLogin({user});
                 localStorage.setItem('user', JSON.stringify(user));
-                navigate('/trilhas');
+                console.log(user)
+                if (user.user.role === 'admin') {
+                    return navigate('/dashboard')
+                } else{
+                    navigate('/trilhas');
+                }
             }
         } catch (e) {
             console.log(e)
