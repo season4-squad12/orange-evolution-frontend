@@ -11,14 +11,17 @@ import {
   CardDetails, DivProgress,
   Progress, DivStudent, DivFeedBack, Button
 } from './style';
-import ModalCreateUser from '../Modals/ModalContent/ModalCreateContent';
+import ModalCreateSubtrail from '../Modals/ModalSubTrail/ModalCreateSubtrail';
+/* import ModalUpdateSubtrail from '../Modals/ModalSubTrail/ModalUpdateSubtrail';
+import ModalUpdateTrail from '../Modals/ModalTail/ModalUpdateTrail';
+import ModalCreateContnet from '../Modals/ModalContent/ModalCreateContent'; */
 
 const DashboardAdmin = () => {
   const [trails, setTrail] = useState([]);
-  const [isOpenUp, setIsOpenUp] = useState(false);
+  const [openSubCreate, setOpenSubCreate] = useState(false);
 
-  const updateUser = () => {
-    setIsOpenUp(true);
+  const createsubTrail = () => {
+    setOpenSubCreate(true);
   };
 
   const requestTrails = async () => {
@@ -32,10 +35,10 @@ const DashboardAdmin = () => {
 
   return (
     <Main>
-      <ModalCreateUser isOpen={isOpenUp} setIsOpen={setIsOpenUp} />
+      <ModalCreateSubtrail isOpen={openSubCreate} setIsOpen={setOpenSubCreate} />
       <Header />
       <DivPerfil>
-        <button onClick={updateUser}>Cicla aqui</button>
+        <button onClick={createsubTrail}>opensubtrail</button>
         <ImagePerfil src={fotoPerfil} alt="foto de perfil" />
         <div>
           <h1>Rodrigo Carvalho</h1>

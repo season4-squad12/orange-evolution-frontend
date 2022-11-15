@@ -215,3 +215,10 @@ export const ModalFooter = styled.div`
   align-items: center;
   justify-content: ${({positionButton}) => positionButton};
 `;
+
+export const Diviser = styled.div`
+  width: 90%;
+  height: 0.5px;
+  background-color: #9A9A9A;
+  margin-bottom: 20px;
+`;

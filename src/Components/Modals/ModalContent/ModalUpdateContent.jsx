@@ -1,20 +1,25 @@
-import React, {useState} from 'react';
+import React from 'react';
+import { useState } from 'react';
 import close from '../../../images/close.png';
 import polygon from '../../../images/polygon-down.png';
 import { 
   Button, Input, Label, Modal, ModalContainer,
   ModalHeader, ModalBody, DivMenu, Card,
   TextArea, SelectForm, DivDuoSelect, ModalFooter,
-} from '../../../styles/Modal';
+} from '../../../styles/style';
 
-const ModalCreateContnet = ({ isOpen, setIsOpen }) => {
-  const [ selectSubTrail, setSelectSubtrail] = useState('')
-  const [valueTitle, setValueTitle] = useState('');
-  const [valueDescription, setValueDescription] = useState('');
-  const [valueType, setValueType] = useState('');
-  const [valueAuthor, setValueAuthor] = useState('');
-  const [valueDuration, setValueDuration] = useState('');
-  const [valueLink, setValueLink] = useState('');
+const ModalUpdateContent = ({ isOpen, setIsOpen, content }) => {
+  const [ selectSubTrail, setSelectSubtrail] = useState('Módulo')
+  const [valueTitle, setValueTitle] = useState(content.title);
+  const [valueDescription, setValueDescription] = useState(content.description);
+  const [valueType, setValueType] = useState(content.type);
+  const [valueAuthor, setValueAuthor] = useState(content.author);
+  const [valueDuration, setValueDuration] = useState(content.duration);
+  const [valueLink, setValueLink] = useState(content.link);
+
+  const closeModal = () => {
+    setIsOpen(false);
+  }
 
   const changeSubtrail = ({ target: { value }}) => {
     setSelectSubtrail(() => value)
@@ -44,9 +49,6 @@ const ModalCreateContnet = ({ isOpen, setIsOpen }) => {
     setValueLink(() => value)
   };
 
-  const closeModal = () => {
-    setIsOpen(false);
-  }
 
   return (
     <Modal open={ isOpen }>
@@ -71,7 +73,7 @@ const ModalCreateContnet = ({ isOpen, setIsOpen }) => {
             <Label>
               Selecione o módulo:
               <SelectForm value={selectSubTrail} onChange={changeSubtrail}>
-                <select>
+                <select valueType>
                   <option>UX/UI</option>
                   <option>UX/UI</option>
                 </select>
@@ -84,15 +86,15 @@ const ModalCreateContnet = ({ isOpen, setIsOpen }) => {
             </Label>
             <Label>
               Descrição do Conteúdo:
-              <TextArea name="description" value={valueDescription} onChange={changeDescription}/>
+              <TextArea name="description" value={valueDescription} onChange={changeDescription} />
             </Label>
             <Label>
               Autor:
-              <Input name="author" type="text" value={valueAuthor} onChange={changeAuthor}/>
+              <Input name="author" type="text" value={valueAuthor} onChange={changeAuthor} />
             </Label>
             <Label>
               Link:
-              <Input name="link" type="text" value={valueLink} onChange={changeLink} />
+              <Input name="link" type="text" value={valueLink} onChange={changeLink}/>
             </Label>
             <DivDuoSelect>
             <Label>
@@ -100,10 +102,10 @@ const ModalCreateContnet = ({ isOpen, setIsOpen }) => {
               <Input name="duration" type="text" wd="137px" value={valueDuration} onChange={changeDuration} />
             </Label>
             <Label>
-              Selecione o tipo:
+              Selecione o módulo:
               <SelectForm wd="137px" value={valueType} onChange={changeType}>
                 <select>
-                <option value="Artigo">Artigo</option>
+                  <option value="Artigo">Artigo</option>
                   <option value="Glossário">Glossário</option>
                   <option value="Live">Live</option>
                   <option value="Livro">Livro</option>
@@ -112,7 +114,8 @@ const ModalCreateContnet = ({ isOpen, setIsOpen }) => {
               </SelectForm>
             </Label>
             </DivDuoSelect>
-            <ModalFooter positionButton="end">
+            <ModalFooter positionButton="space-between">
+              <Button bgColor="#FF0000" margin="0 0 0 15px">Excluir</Button>
               <Button bgColor="#00856C" margin="0 15px 0 0">Adicionar</Button>
 
             </ModalFooter>
@@ -123,4 +126,4 @@ const ModalCreateContnet = ({ isOpen, setIsOpen }) => {
   )
 }
 
-export default ModalCreateContnet;
+export default ModalUpdateContent;
