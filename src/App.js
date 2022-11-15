@@ -8,6 +8,7 @@ import ContentScreen from './Components/ContentScreen';
 import { SelectTrail } from './Components/SelectTrail';
 import DashboardAdmin from './Components/DashboardAdmin';
 import Management from './Components/Management';
+import FeedbackAdmin from './Components/FeedbackAdmin';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route path='/dashboard' element={<DashboardAdmin />} />
       <Route path='/perfil' element={ <DashboardUser />} />
       <Route path='/gerenciamento' element={<Management />} />
+      <Route path='/feedbacks' element={<FeedbackAdmin />} />
       <Route path="*" element={<Login />} />
     </Routes>
   );
