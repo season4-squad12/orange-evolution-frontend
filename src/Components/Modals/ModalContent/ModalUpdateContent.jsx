@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import close from '../../../images/close.png';
@@ -113,8 +114,8 @@ const ModalUpdateContent = ({ isOpen, setIsOpen, content }) => {
         <ModalBody>
             <Label>
               Selecione o módulo:
-              <SelectForm value={selectSubTrail} onChange={changeSubtrail}>
-                <select valueType>
+              <SelectForm>
+                <select value={selectSubTrail} onChange={changeSubtrail}>
                   <option>UX/UI</option>
                   <option>UX/UI</option>
                 </select>
@@ -144,8 +145,8 @@ const ModalUpdateContent = ({ isOpen, setIsOpen, content }) => {
             </Label>
             <Label>
               Selecione o módulo:
-              <SelectForm wd="137px" value={valueType} onChange={changeType}>
-                <select>
+              <SelectForm wd="137px" >
+                <select value={valueType} onChange={changeType}>
                   <option value="Artigo">Artigo</option>
                   <option value="Glossário">Glossário</option>
                   <option value="Live">Live</option>

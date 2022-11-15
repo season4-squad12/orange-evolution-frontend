@@ -47,7 +47,7 @@ const Management = () => {
     setOpCreateSubtrail(true);
   };
 
-  const openUpdateSutrail = (subtrail) => {
+  const openUpdateSubtrail = (subtrail) => {
     setSelectSubtrail(()=> subtrail)
     setOpUpdateSubtrail(true);
   };
@@ -181,7 +181,7 @@ const Management = () => {
               <CardModule key={index}>
                 <SubtrailAndEdit>
                   <p>{subtrail.name} </p>
-                  <ButtonEdit onClick={() => openUpdateSutrail(subtrail)}>
+                  <ButtonEdit onClick={() => openUpdateSubtrail(subtrail)}>
                   <img src={iconEdit} alt="" />
                   </ButtonEdit>
                 </SubtrailAndEdit>
@@ -200,7 +200,7 @@ const Management = () => {
             contents.map((content) => 
               <CardContent>
                 <NameContentAndEdit>
-                  <p>{content.name}</p>
+                  <p>{content.title}</p>
                   <ButtonEdit onClick={() => openUpdateContent(content)}>
                     <img src={iconEdit} alt="" />
                   </ButtonEdit>
@@ -220,14 +220,18 @@ const Management = () => {
             )
           )}
         </MainManagement>
-        
         <ModalCreateTrail isOpen={opCreateTrail} setIsOpen={setOpCreateTrail} />
-        <ModalUpdateTrail isOpen={opUpdateTrail} setIsOpen={setOpUpdateTrail} trail={selectTrail}/>
-        <ModalUpdateSubtrail isOpen={opUpdateSubtrail} setIsOpen={setOpUpdateSubtrail} subtrail={selectSubtrail} />
+        {selectTrail.name && 
+          <ModalUpdateTrail isOpen={opUpdateTrail} setIsOpen={setOpUpdateTrail} trail={selectTrail}/>
+        }
+        {selectSubtrail.name &&
+          <ModalUpdateSubtrail isOpen={opUpdateSubtrail} setIsOpen={setOpUpdateSubtrail} subtrail={selectSubtrail} />
+        }
         <ModalCreateSubtrail isOpen={opCreateSubtrail} setIsOpen={setOpCreateSubtrail} />
         <ModalCreateContent isOpen={opCreateContent} setIsOpen={setOpCreateContent} />
-        <ModalUpdateContent isOpen={opUpdateContent} setIsOpen={setOpUpdateContent} content={selectContent}/>
-
+        {selectContent.title &&
+          <ModalUpdateContent isOpen={opUpdateContent} setIsOpen={setOpUpdateContent} content={selectContent}/>
+        }
       <MenuAdmin />
     </>
   )

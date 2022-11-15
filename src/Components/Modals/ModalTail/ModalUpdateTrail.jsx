@@ -73,7 +73,6 @@ const ModalUpdateTrail = ({ isOpen, setIsOpen, trail }) => {
   };
 
   useEffect(()=>{
-    console.log(trail)
   }, [])
 
   return (

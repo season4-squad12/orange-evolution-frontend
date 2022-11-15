@@ -127,7 +127,7 @@ export const requestFeedback = async (body) => {
 
 export const requestContentsAll = async () => {
     const {data} = await api.get('/contents');
-    return {data};
+    return data;
 };
 
 export const requestSubtrailsAll = async () => {
