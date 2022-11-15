@@ -4,10 +4,9 @@ export const MainManagement = styled.main`
 padding-bottom: 80px;
 font-family: 'Montserrat';
 font-size: 15px;
-background-color: orange;
 width: 100vw;
 height: 100vh;
-margin: 0 auto;
+margin: 0px auto 20px auto;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -71,6 +70,7 @@ export const Panel = styled.div`
 
 // Card para edição de Trilha
 export const CardTrail = styled.div`
+  margin: 4px 0px;
   padding: 10px;
   width: 100%;
   height: 60px;
@@ -84,6 +84,7 @@ export const CardTrail = styled.div`
 
 //Campo para edição de módulo
 export const CardModule = styled.div`
+  margin: 4px 0px;
   width: 100%;
   height: 116px;
   background-color: #FFFFFF;
@@ -117,4 +118,44 @@ export const NameTrail = styled.div`
   align-items: center;
   justify-content: space-between;
  
+`
+
+//Campo para edição de conteúdo 
+
+export const CardContent = styled.div`
+  margin: 4px 0px;
+  width: 100%;
+  height: 143px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 0 4px #BABABA;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+`
+export const NameContentAndEdit = styled.div`
+  padding: 5px 10px 10px 10px;
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  p{
+    font-weight: bold;
+  }
+`
+
+export const NameModule = styled.div`
+  margin-bottom: 8px;
+  padding: 0 10px;
+  width: 100%;
+  background-color: #FFFFFF;
+  color: #767676;
+  border-radius: 8px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `
