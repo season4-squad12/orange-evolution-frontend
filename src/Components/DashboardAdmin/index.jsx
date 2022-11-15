@@ -11,9 +11,16 @@ import {
   CardDetails, DivProgress,
   Progress, DivStudent, DivFeedBack, Button
 } from './style';
+import ModalCreateUser from '../Modals/ModalContent/ModalCreateContent';
 
 const DashboardAdmin = () => {
   const [trails, setTrail] = useState([]);
+  const [isOpenUp, setIsOpenUp] = useState(false);
+
+  const updateUser = () => {
+    setIsOpenUp(true);
+  };
+
   const requestTrails = async () => {
     const response = await requestTrailsHome();
     setTrail(response);
@@ -25,8 +32,10 @@ const DashboardAdmin = () => {
 
   return (
     <Main>
+      <ModalCreateUser isOpen={isOpenUp} setIsOpen={setIsOpenUp} />
       <Header />
       <DivPerfil>
+        <button onClick={updateUser}>Cicla aqui</button>
         <ImagePerfil src={fotoPerfil} alt="foto de perfil" />
         <div>
           <h1>Rodrigo Carvalho</h1>
