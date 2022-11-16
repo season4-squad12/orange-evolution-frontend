@@ -1,27 +1,38 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState, useContext } from 'react';
 import { Header } from '../Header';
 import fotoPerfil from '../../images/image-perfil.png';
-import { requestTrailsHome } from '../../services/api';
+import { requestDataUsers, requestTrailsHome, setToken } from '../../services/api';
 import { InputSelect } from '../../styles/InputSelect';
 import polygon from '../../images/polygon.png';
 import MenuAdmin from '../MenuAdmin';
 import {
   Main, DivPerfil, ImagePerfil, 
   Dashboard, DivCarrosel,
-  CardDetails, DivProgress,
+  CardDetails, DivProgress, DivHeaderFeedback,
   Progress, DivStudent, DivFeedBack, Button
 } from './style';
-import ModalCreateSubtrail from '../Modals/ModalSubTrail/ModalCreateSubtrail';
-/* import ModalUpdateSubtrail from '../Modals/ModalSubTrail/ModalUpdateSubtrail';
-import ModalUpdateTrail from '../Modals/ModalTail/ModalUpdateTrail';
-import ModalCreateContnet from '../Modals/ModalContent/ModalCreateContent'; */
+import { useNavigate } from 'react-router-dom';
+import { GlobalContext } from '../../context/GlobalContext';
+import ModalFeedaback from '../ModalFeedback';
 
 const DashboardAdmin = () => {
+  const {feedbacks} = useContext(GlobalContext);
   const [trails, setTrail] = useState([]);
-  const [openSubCreate, setOpenSubCreate] = useState(false);
+  const [dataUsers, setDataUsers] = useState([]);
+  const [userInfo, setUserInfo] = useState([]);
+  const [openModal, setOpenModal] = useState([]);
+  const [feedbackSelected, setFeedbackSelected] = useState([]);
 
-  const createsubTrail = () => {
-    setOpenSubCreate(true);
+  const openModalFeedback = (feedback) => {
+    setFeedbackSelected(() => feedback);
+    setOpenModal(true);
+  };
+
+  const navigate = useNavigate();
+
+  const redirect = (url) => {
+    navigate(url)
   };
 
   const requestTrails = async () => {
@@ -29,19 +40,37 @@ const DashboardAdmin = () => {
     setTrail(response);
   };
 
+  const requestUsers = async () => {
+    const { user, token } =  JSON.parse(localStorage.getItem('user'));
+    if (!user) return navigate('/login');
+    setUserInfo(user);
+    try {
+      setToken(token);
+      const requestUsers = await requestDataUsers();
+      setDataUsers(requestUsers);
+    } catch(e) {
+        console.log(e)
+    }
+  };
+
+  const logout = () => {
+    localStorage.removeItem('user');
+    navigate('/login')
+  };
+
   useEffect(() => {
-    requestTrails()
+    requestUsers();
+    requestTrails();
   }, [])
 
   return (
+    <>
+    <Header />
     <Main>
-      <ModalCreateSubtrail isOpen={openSubCreate} setIsOpen={setOpenSubCreate} />
-      <Header />
       <DivPerfil>
-        <button onClick={createsubTrail}>opensubtrail</button>
         <ImagePerfil src={fotoPerfil} alt="foto de perfil" />
         <div>
-          <h1>Rodrigo Carvalho</h1>
+          <h1>{ userInfo.name } {userInfo.lastName}</h1>
           <h3>Admin</h3>
         </div>
       </DivPerfil>
@@ -75,21 +104,21 @@ const DashboardAdmin = () => {
             <p>Alunos Cadastrados</p>
           </CardDetails>
         </DivCarrosel>
-        <DivProgress>
+        {/* <DivProgress>
           <h3>Alunos que completaram a trilha</h3>
           <Progress>
             <div>
               <p>20%</p>
             </div>
           </Progress>
-        </DivProgress>
+        </DivProgress> */}
       </Dashboard>
       <DivStudent>
         <h2>Alunos do Orange Evolution</h2>
 
         <DivCarrosel>
             <CardDetails color="#420C66" textColor="#fff">
-              <h4>15</h4>
+              <h4>{dataUsers.length}</h4>
               <p>Alunos Cadastrados</p>
             </CardDetails>
             <CardDetails color="#420C66" textColor="#fff">
@@ -107,13 +136,24 @@ const DashboardAdmin = () => {
           </DivCarrosel>
       </DivStudent>
       <DivFeedBack>
-        <h2>FeedBack dos Alunos(09)</h2>
-        <div><h5>01 - Fundamentos de UX (User...</h5><p>Visualizar</p></div>
-        <div><h5>02 - Fundamentos de UX (User...</h5><p>Visualizar</p></div>
-        <div><h5>03 - Fundamentos de UX (User...</h5><p>Visualizar</p></div>
+        <DivHeaderFeedback>
+          <h2>FeedBack dos Alunos({feedbacks.length})</h2>
+          <button onClick={() => redirect('/feedbacks')}>Ver todos</button>
+        </DivHeaderFeedback>
+        { feedbacks.length > 0 && (
+          feedbacks.slice(0, 3).map((feedback, index) => (
+            <div key={index}><h5>{index} - {feedback.subtrail}</h5><button onClick={() => openModalFeedback(feedback)}>Visualizar</button></div>
+          ))
+        )}
       </DivFeedBack>
-      <Button>Sair da Plataforma</Button> 
+      <Button onClick={ logout }>Sair da Plataforma</Button> 
     </Main>
+    { feedbackSelected.message &&
+      <ModalFeedaback isOpen={openModal} setIsOpen={setOpenModal} feedback={feedbackSelected
+      }/>
+    }
+    <MenuAdmin />
+    </>
   );
 };
 

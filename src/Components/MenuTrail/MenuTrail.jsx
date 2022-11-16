@@ -7,7 +7,6 @@ import {InputSelect} from '../../styles/InputSelect'
 import { useState } from 'react'
 import { GlobalContext } from '../../context/GlobalContext'
 import polygon from '../../images/polygon.png'
-import TopMenu from '../TopMenu'
 
 const CardTrail = () => {  
   const {trails} = useContext(GlobalContext)
@@ -61,7 +60,7 @@ const CardTrail = () => {
                 <p>Nenhuma subtrilha encontrada.</p>
               :
               trailActive?.subtrilhas?.map((subtrail, index) => (
-                <DropDownSubtrail key={index} subtrail={subtrail} />
+                <DropDownSubtrail key={index} subtrail={subtrail} trail={trailActive.name} />
               ))
         }
     

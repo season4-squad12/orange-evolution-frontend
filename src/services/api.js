@@ -50,6 +50,17 @@ export const requestCreateUser = async (body) => {
     return data;
 };
 
+export const requestDataUsers = async () => {
+    const {data} = await api.get('/usersrole/student');
+    return data;
+};
+
+// EndPoint Content
+export const requestContent = async (id) => {
+    const { data } = await api.get(`/contents/${id}`);
+    return data;
+};
+
 // Criar e atulizar Trail, SubTrails e Contents
 
 // Trails
@@ -97,5 +108,34 @@ export const requestDeleteContent = async (id) => {
 
 export const requestCreateContent = async (body) => {
     const {data} = await api.post('/contents', body);
+    return data;
+};
+
+// FeedBack
+
+export const requestCreateFeedback = async (body) => {
+    const {data} = await api.post('/feedbacks', body);
+    return data;
+}
+
+export const requestFeedback = async (body) => {
+    const {data} = await api.get('/feedbacks');
+    return data;
+};
+
+// Retorn todos os valores de cada endpoint específico
+
+export const requestContentsAll = async () => {
+    const {data} = await api.get('/contents');
+    return data;
+};
+
+export const requestSubtrailsAll = async () => {
+    const {data} = await api.get('/subtrails');
+    return data;
+};
+
+export const requestTrailssAll = async () => {
+    const {data} = await api.get('/trails');
     return data;
 };

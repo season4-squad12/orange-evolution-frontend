@@ -95,7 +95,7 @@ const ModalCreateTrail = ({ isOpen, setIsOpen }) => {
               Breve explicação da atuação do profissional:
               <TextArea name="response" value={response} onChange={changeResponse} />
             </Label>
-            <ModalFooter positionButton="space-between">
+            <ModalFooter positionButton="end">
               <Button bgColor="#00856C" margin="0 15px 0 0" onClick={submitForm}>Adicionar</Button>
             </ModalFooter>
             

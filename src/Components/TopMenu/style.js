@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const NavTop = styled.nav`
+  display: none;
   background: none;
   padding-right: 20px;
   min-width: 134px;

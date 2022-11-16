@@ -129,8 +129,8 @@ const ModalCreateContnet = ({ isOpen, setIsOpen }) => {
             </Label>
             <Label>
               Selecione o tipo:
-              <SelectForm wd="137px" value={valueType} onChange={changeType}>
-                <select>
+              <SelectForm wd="137px" v>
+                <select alue={valueType} onChange={changeType}>
                 <option value="Artigo">Artigo</option>
                   <option value="Glossário">Glossário</option>
                   <option value="Live">Live</option>

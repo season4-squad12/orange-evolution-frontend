@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { GlobalContext } from "../../context/GlobalContext";
 import { requestLogin } from "../../services/api";
 import Logo from '../../images/logo-orange-evolution.png'
 import Voltar from '../../images/voltar-icone.png'
@@ -10,15 +11,16 @@ import { Main, Card, ButtonFooter, Button, CardForm, Input } from './style';
 
 const Login = () => {
     document.title = 'Login';
-
-    const redirect = (url) => {
-        navigate(url);
-    };
-
+    const {setuserLogin} = useContext(GlobalContext);
+    
     const [valueEmail, setEmail] = useState('');
     const [valuePassword, setPassword] = useState('');
 
     const navigate = useNavigate();
+
+    const redirect = (url) => {
+        navigate(url);
+    };
 
     const handleChangeEmail = ({ target: { value } }) => {
         setEmail(value);
@@ -32,8 +34,13 @@ const Login = () => {
         try{
             const user = await requestLogin({ email: valueEmail, password: valuePassword });
             if (user) {
+                setuserLogin({user});
                 localStorage.setItem('user', JSON.stringify(user));
-                navigate('/trilhas');
+                if (user.user.role === 'admin') {
+                    return navigate('/dashboard')
+                } else{
+                    navigate('/trilhas');
+                }
             }
         } catch (e) {
             console.log(e)

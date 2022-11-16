@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Header } from "../Header";
 import MenuFooter from '../MenuFooter/MenuFooter';
 import { DivPerfil, ImagePerfil } from "./style";
@@ -8,15 +8,35 @@ import {
   Main, ProgressAll, TrailSelected, GridCard, Card, Divser,
   Progress, ButtomSum, CompletedTrail, LineDiviser, Studying,
   ProgressTrail, Button} from './style';
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const DashboardUser = () => {
+  const [userInfo, setUserInfo] = useState({});
+
+  const userLog = () => {
+    const { user } =  JSON.parse(localStorage.getItem('user'));
+    if (!user) return navigate('/login');
+    setUserInfo(user);
+  }
+
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.removeItem('user');
+    navigate('/login')
+  };
+
+  useEffect(() => {
+    userLog();
+  },[]);
+
   return (
     <Main>
       <Header />
       <DivPerfil>
         <ImagePerfil src={fotoPerfil} alt="foto de perfil" />
         <div>
-          <h1>Rodrigo Carvalho</h1>
+          <h1>{ userInfo.name } {userInfo.lastName}</h1>
         </div>
       </DivPerfil>
       <Divser />
@@ -76,7 +96,7 @@ const DashboardUser = () => {
           <span>Fundamentos UX - UX/UI</span>
         </ProgressTrail>
       </Studying>
-      <Button>Sair da Plataforma</Button>
+      <Button onClick={ logout }>Sair da Plataforma</Button>
       <MenuFooter />
     </Main>
   )
