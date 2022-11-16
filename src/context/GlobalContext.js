@@ -17,7 +17,6 @@ export const GlobalProvider = ({ children }) => {
   const verifyLogin = async () => {
     const { user } =  JSON.parse(localStorage.getItem('user'));
     if (!user) return navigate('/login');
-    setuserLogin(user);
     try {
       setToken(user.token);
       await validateLogin();

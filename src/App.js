@@ -13,14 +13,15 @@ import FeedbackAdmin from './Components/FeedbackAdmin';
 function App() {
   return (
     <Routes>
+      
       <Route path='/' element={<Home />}/>
       <Route path='/login' element={<Login />}/>
       <Route path='/registrar' element={<Register />}/>
       <Route path='/trilhas' element={ <MenuTrails />} />
       <Route path='/conteudo' element={ <ContentScreen /> } />
       <Route path="selecionar-trilha" element={<SelectTrail />} />
-      <Route path='/dashboard' element={<DashboardAdmin />} />
       <Route path='/perfil' element={ <DashboardUser />} />
+      <Route path='/dashboard' element={<DashboardAdmin />} />
       <Route path='/gerenciamento' element={<Management />} />
       <Route path='/feedbacks' element={<FeedbackAdmin />} />
       <Route path="*" element={<Login />} />
