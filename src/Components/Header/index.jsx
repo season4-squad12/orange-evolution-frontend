@@ -21,6 +21,7 @@ export const Header = () => {
     getLocalUser();
   }, []);
 
+  const location = window.location.pathname;
   return (
     <HeaderApp>
       <Image src={Logo} alt="logo da aplicação" width="155px" height="61px" marginLeft="15px" />
@@ -29,13 +30,13 @@ export const Header = () => {
         <div>
           <button 
             onClick={ () => redirect('/dashboard')}
-            active={ window.location.pathname === "/dashboard" && 'true'}
+            active={ window.location.pathname === "/dashboard" ? 1 : 0}
           >
             Dashboard
           </button>
           <button 
             onClick={ () => redirect('/gerenciamento')}
-            active={ window.location.pathname === "/admin" && 'true'}
+            active={  location === "/admin" ? 1 : 0}
           >
             Admin
           </button>

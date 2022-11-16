@@ -61,7 +61,7 @@ export const Dashboard = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #001024;
-  // height: 385px;
+  height: 285px;
 
   h2 {
     font-family: 'Montserrat', sans-serif;
@@ -94,7 +94,7 @@ export const Dashboard = styled.div`
 
   // Medium devices (tablets, 768px and up)
   @media (min-width: 576px) and (max-width: 767.98px) {
-    height: 400px;
+    height: 310px;
   }
 
   @media (min-width: 768px) and (max-width: 991.98px) {
@@ -282,6 +282,12 @@ export const DivFeedBack = styled.div`
       font-weight: 500;
       font-size: 13px;
       line-height: 16px;
+    }
+
+    button {
+      margin-right: 15px;
+      background: none;
+      border: none;
     }
   }
 

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -41,8 +42,8 @@ const FeedbackAdmin = () => {
           <DividerContent style={{width:'100%',margin:'20px'}}/>
 
         { feedbacks &&
-          feedbacks.map((feedback) => (
-          <CardFeedback>
+          feedbacks.map((feedback, index) => (
+          <CardFeedback key={index}>
             <p>
               {feedback.content} | {feedback.content} | {feedback.subtrail}
             </p>

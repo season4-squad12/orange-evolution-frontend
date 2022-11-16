@@ -36,7 +36,6 @@ const Login = () => {
             if (user) {
                 setuserLogin({user});
                 localStorage.setItem('user', JSON.stringify(user));
-                console.log(user)
                 if (user.user.role === 'admin') {
                     return navigate('/dashboard')
                 } else{

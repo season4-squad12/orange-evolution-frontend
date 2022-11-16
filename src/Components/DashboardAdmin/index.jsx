@@ -12,13 +12,22 @@ import {
   CardDetails, DivProgress, DivHeaderFeedback,
   Progress, DivStudent, DivFeedBack, Button
 } from './style';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../../context/GlobalContext';
+import ModalFeedaback from '../ModalFeedback';
 
 const DashboardAdmin = () => {
   const {feedbacks} = useContext(GlobalContext);
   const [trails, setTrail] = useState([]);
   const [dataUsers, setDataUsers] = useState([]);
+  const [userInfo, setUserInfo] = useState([]);
+  const [openModal, setOpenModal] = useState([]);
+  const [feedbackSelected, setFeedbackSelected] = useState([]);
+
+  const openModalFeedback = (feedback) => {
+    setFeedbackSelected(() => feedback);
+    setOpenModal(true);
+  };
 
   const navigate = useNavigate();
 
@@ -34,6 +43,7 @@ const DashboardAdmin = () => {
   const requestUsers = async () => {
     const { user, token } =  JSON.parse(localStorage.getItem('user'));
     if (!user) return navigate('/login');
+    setUserInfo(user);
     try {
       setToken(token);
       const requestUsers = await requestDataUsers();
@@ -60,7 +70,7 @@ const DashboardAdmin = () => {
       <DivPerfil>
         <ImagePerfil src={fotoPerfil} alt="foto de perfil" />
         <div>
-          <h1>Rodrigo Carvalho</h1>
+          <h1>{ userInfo.name } {userInfo.lastName}</h1>
           <h3>Admin</h3>
         </div>
       </DivPerfil>
@@ -94,14 +104,14 @@ const DashboardAdmin = () => {
             <p>Alunos Cadastrados</p>
           </CardDetails>
         </DivCarrosel>
-        <DivProgress>
+        {/* <DivProgress>
           <h3>Alunos que completaram a trilha</h3>
           <Progress>
             <div>
               <p>20%</p>
             </div>
           </Progress>
-        </DivProgress>
+        </DivProgress> */}
       </Dashboard>
       <DivStudent>
         <h2>Alunos do Orange Evolution</h2>
@@ -132,12 +142,16 @@ const DashboardAdmin = () => {
         </DivHeaderFeedback>
         { feedbacks.length > 0 && (
           feedbacks.slice(0, 3).map((feedback, index) => (
-            <div key={index}><h5>{index} - {feedback.subtrail}</h5><p>Visualizar</p></div>
+            <div key={index}><h5>{index} - {feedback.subtrail}</h5><button onClick={() => openModalFeedback(feedback)}>Visualizar</button></div>
           ))
         )}
       </DivFeedBack>
       <Button onClick={ logout }>Sair da Plataforma</Button> 
     </Main>
+    { feedbackSelected.message &&
+      <ModalFeedaback isOpen={openModal} setIsOpen={setOpenModal} feedback={feedbackSelected
+      }/>
+    }
     <MenuAdmin />
     </>
   );
